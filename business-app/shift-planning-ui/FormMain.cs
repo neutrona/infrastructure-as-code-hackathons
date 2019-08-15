@@ -193,7 +193,7 @@ namespace shift.ui.architect
             #region Git Repository
 
             // Remote Repo
-            remoteRepo = config.IntentQueueRoutingKey;
+            remoteRepo = config.IntentRepositoryURL;
 
             // Git Login
             var password = new System.Security.SecureString();
