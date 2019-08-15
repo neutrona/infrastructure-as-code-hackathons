@@ -1,0 +1,86 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # The required headless service for StatefulSets
+  name: db-writer-client
+  labels:
+    app: db-writer-client
+  namespace: {{namespace}}
+spec:
+  ports:
+  - port: 60000
+    name: prom-port
+  clusterIP: None
+  selector:
+    app: db-writer-client
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: db-writer-client-pv-claim
+  labels:
+    app: db-writer-client
+  namespace: {{namespace}}
+spec:
+  storageClassName: rook-block
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Mi
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: db-writer-client
+  namespace: {{namespace}}
+spec:
+  serviceName: "db-writer-client"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: db-writer-client
+        version: v1
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: zone
+                operator: In
+                values:
+                - {{region2}}
+              - key: role
+                operator: In
+                values: 
+                - worker
+      containers:
+      - name: db-writer-client
+        image: rodalvarez/db-writer-client
+        env:
+        - name: WRITER_SERVER_ADDRESS
+          value: db-writer-server
+        - name: NEO4JDB_HOST_IP
+          value: neo4j-{{region2}}
+        - name: NEO4JDB_USERNAME
+          value: {{neo4j_username}}
+        - name: NEO4JDB_PASSWORD
+          value: {{neo4j_password}}
+        - name: RMQ_HOST
+          value: {{rmq_host}}
+        - name: RMQ_USERNAME
+          value: {{rmq_username}}
+        - name: RMQ_PASSWORD
+          value: {{rmq_password}}
+        volumeMounts:
+        - name: db-writer-client-storage
+          mountPath: /opt
+        ports:
+        - name: prom-port
+          containerPort: 60000
+      volumes:
+      - name: db-writer-client-storage
+        persistentVolumeClaim:
+          claimName: db-writer-client-pv-claim

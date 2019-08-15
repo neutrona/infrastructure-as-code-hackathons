@@ -1,0 +1,21 @@
+﻿<input xmlns="urn:opendaylight:params:xml:ns:yang:topology:pcep">
+  <node>pcc://{{PCC}}</node>
+  <name>{{ParentId}}/{{SymbolicPathName}}</name>
+  <arguments>
+    <lsp xmlns="urn:opendaylight:params:xml:ns:yang:pcep:ietf:stateful">
+      <delegate>true</delegate>
+      <administrative>true</administrative>
+    </lsp>
+    <ero>
+      {{#ComputedExplicitRouteObject}}
+      <subobject>
+        <loose>false</loose>
+        <ip-prefix>
+          <ip-prefix>{{.}}/32</ip-prefix>
+        </ip-prefix>
+      </subobject>
+      {{/ComputedExplicitRouteObject}}
+    </ero>
+  </arguments>
+  <network-topology-ref xmlns:topo="urn:TBD:params:xml:ns:yang:network-topology">/topo:network-topology/topo:topology[topo:topology-id="pcep-topology"]</network-topology-ref>
+</input>

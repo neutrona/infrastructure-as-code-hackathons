@@ -1,0 +1,41 @@
+﻿{
+  "RESTServerConfig": {
+    "Host": "127.0.0.1",
+    "Port": 8646
+  },
+  "ServerBasicAuth": {
+    "ReadOnly": {
+      "Username": "admin",
+      "Password": "admin"
+    },
+    "ReadWrite": {
+      "Username": "admin",
+      "Password": "admin"
+    }
+  },
+  "Inventory": {
+    "LoadNodesOnStartUp": true,
+    "InventoryReloadInterval": 300000,
+    "InventoryURI": "http://inventory-api:5002",
+    "InventoryResource": "nodes",
+    "InventoryLimit": 0,
+    "InventoryAuth": {
+      "Username": "admin",
+      "Password": "admin"
+    },
+    "InventoryBlackListRegex": ".*RR[0-9].*",
+    "NodeAuth": {
+      "Username": "admin",
+      "Password": "admin"
+    },
+    "NodeKeepAliveInterval": 30000
+  },
+  "MessageBroker": {
+    "MessageBrokerHost": "rabbitmq",
+    "MessageBrokerUsername": "admin",
+    "MessageBrokerPassword": "password",
+    "ExchangeName": "NETCONF_ASYNC_BROKER",
+    "RPCRequestQueueSuffix": "_RPC_Request_Queue",
+    "RPCRoutingKeyPrefix":  "NETCONF.request."
+  }
+}

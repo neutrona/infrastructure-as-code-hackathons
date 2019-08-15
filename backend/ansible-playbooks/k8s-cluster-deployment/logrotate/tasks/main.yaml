@@ -1,0 +1,17 @@
+---
+
+    - name: Logrotate config
+      when: haproxy is not defined
+      become: yes
+      shell: |
+          cat >> /etc/logrotate.conf << EOF
+          /var/lib/docker/containers/**/*-json.log {
+              size 10M
+              rotate 5
+          }
+
+    - name: Running logrotate
+      when: haproxy is not defined
+      become: yes
+      shell: "logrotate /etc/logrotate.conf"
+      ignore_errors: yes

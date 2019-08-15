@@ -1,0 +1,3199 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dataweb.NShape.WinFormsUI</name>
+    </assembly>
+    <members>
+        <member name="T:Dataweb.NShape.WinFormsUI.ToolSetToolStripPresenter">
+            <summary>
+            Implementation of a ToolSetPresenter based on a System.Windows.Forms.ToolStrip.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ToolSetToolStripPresenter.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.ToolSetToolStripPresenter" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ToolSetToolStripPresenter.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.ToolSetToolStripPresenter" />.
+            </summary>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.ToolSetToolStripPresenter.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ToolSetToolStripPresenter.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ToolSetToolStripPresenter.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ToolSetToolStripPresenter.ProductVersion">
+            <summary>
+            Specifies the version of the assembly containing the component.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ToolSetToolStripPresenter.ToolSetController">
+            <summary>
+            Specifies the controller for this presenter.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ToolSetToolStripPresenter.HideDeniedMenuItems">
+            <summary>
+            Specifies whether MenuItemDefs should not appear in the dynamic context menu if they are not granted.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.TemplatePresenter">
+            <summary>
+            Implementation of a <see cref="T:Dataweb.NShape.WinFormsUI.TemplatePresenter" /> used for editing templates.
+            </summary>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.TemplatePresenter.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.TemplatePresenter" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.#ctor(Dataweb.NShape.Project,Dataweb.NShape.Template)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.TemplatePresenter" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.#ctor(Dataweb.NShape.Project)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.TemplatePresenter" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.Finalize">
+            <summary>
+            Finalizer of <see cref="T:Dataweb.NShape.WinFormsUI.TemplatePresenter" />
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.Dataweb#NShape#Advanced#IDisplayService#Invalidate(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.Dataweb#NShape#Advanced#IDisplayService#Invalidate(System.Drawing.Rectangle)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.Dataweb#NShape#Advanced#IDisplayService#NotifyBoundsChanged">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.ApplyChanges">
+            <summary>
+            Apply the changes performed on the template.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.DiscardChanges">
+            <summary>
+            Cancel all changes performed on the template.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.PopulatePropertyMappingGrid">
+            <summary>
+            Creates a row in the property mapping grid for each existing model mapping of the given template
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.IsShapePropertyMapped(System.Int32)">
+            <summary>
+            Checks if the shape property is already mapped to another model property
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.IsModelPropertyMapped(System.Int32)">
+            <summary>
+            Checks if the shape property is already mapped to another model property
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.UpdateNumericModelMapping(Dataweb.NShape.Advanced.NumericModelMapping,System.Int32)">
+            <summary>
+            Updates the given ModelMapping with the information from the given row's cells
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.UpdateFormatModelMapping(Dataweb.NShape.Advanced.FormatModelMapping,System.Int32)">
+            <summary>
+            Updates the given ModelMapping with the information from the given row's cells
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.UpdateStyleModelMapping(Dataweb.NShape.Advanced.StyleModelMapping,System.Int32)">
+            <summary>
+            Updates the given ModelMapping with the information from the given row's cells
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.MaintainEmptyRows(System.Windows.Forms.DataGridView,System.Boolean)">
+            <summary>
+            Removes all empty rows from the given grid. Adds an empty row at the bottom if desired
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.IsRowEmpty(System.Windows.Forms.DataGridViewRow)">
+            <summary>
+            Checks if the given Row contans values
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.TemplatePresenter.Dataweb#NShape#Advanced#IDisplayService#InfoGraphics">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.TemplatePresenter.Dataweb#NShape#Advanced#IDisplayService#HintBackgroundStyle">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.TemplatePresenter.Dataweb#NShape#Advanced#IDisplayService#HintForegroundStyle">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.TemplatePresenter.ProductVersion">
+            <summary>
+            Specifies the version of the assembly containing the component.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.TemplatePresenter.TemplateController">
+            <summary>
+            Gets or sets the controller for tis presenter.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.TemplatePresenter.TemplateWasModified">
+            <summary>
+            Specifies whether the template was modified.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplatePresenter.ShapeItem.ToString">
+            <override></override>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.LayerEditor">
+            <summary>
+            UserControl for editing layers.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerEditor.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.LayerEditor" />.
+            </summary>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.LayerEditor.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerEditor.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerEditor.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.LayerEditor.ProductVersion">
+            <summary>
+            Specifies the version of the assembly containing the component.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.LayerEditor.DiagramPresenter">
+            <summary>
+            Specifies the DiagramPresenter for this layer editor.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.LayerEditor.DiagramSetController">
+            <summary>
+            Specifies a DiagramSetController which provides the diagrams, this layer editor refers to.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.TextTypeConverter">
+            <summary>
+            Converts all types of System.String and collections of System.String to System.String and collections of System.String.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextTypeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextTypeConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextTypeConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <override></override>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.NamedImageTypeConverter">
+            <summary>
+            Converts a Dataweb.NShape.Advanced.NamedImage to a System.Drawing.Image type or a System.String.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.NamedImageTypeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.NamedImageTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <override></override>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.StyleTypeConverter">
+            <summary>
+            Converts a Dataweb.NShape.IStyle type to a System.String type.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleTypeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <override></override>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.FontFamilyTypeConverter">
+            <summary>
+            Converts a System.Drawing.FontFamily type to a System.String type.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.FontFamilyTypeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.FontFamilyTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <override></override>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.TextPaddingTypeConverter">
+            <summary>
+            Converts a Dataweb.NShape.TextPadding type to a System.Windows.Forms.Padding or a System.String type and vice versa.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextPaddingTypeConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextPaddingTypeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextPaddingTypeConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextPaddingTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextPaddingTypeConverter.CreateInstance(System.ComponentModel.ITypeDescriptorContext,System.Collections.IDictionary)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextPaddingTypeConverter.GetCreateInstanceSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextPaddingTypeConverter.GetProperties(System.ComponentModel.ITypeDescriptorContext,System.Object,System.Attribute[])">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextPaddingTypeConverter.GetPropertiesSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <override></override>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.FontFamilyUITypeEditor">
+            <summary>
+            NShape UI type editor for choosing a character style's font from a drop down list.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.FontFamilyUITypeEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.FontFamilyUITypeEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.FontFamilyUITypeEditor.GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.FontFamilyUITypeEditor.PaintValue(System.Drawing.Design.PaintValueEventArgs)">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.FontFamilyUITypeEditor.IsDropDownResizable">
+            <override></override>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.LayerUITypeEditor">
+            <summary>
+            NShape UI type editor for adding/removing shapes to/from layers.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerUITypeEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerUITypeEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerUITypeEditor.GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.LayerUITypeEditor.IsDropDownResizable">
+            <override></override>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.TextUITypeEditor">
+            <summary>
+            NShape UI type editor for editing properties of type System.String or a System.String collection type.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextUITypeEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextUITypeEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <override></override>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.NamedImageUITypeEditor">
+            <summary>
+            NShape UI type editor for choosing an image and assinging a name.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.NamedImageUITypeEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.NamedImageUITypeEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.NamedImageUITypeEditor.GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.NamedImageUITypeEditor.PaintValue(System.Drawing.Design.PaintValueEventArgs)">
+            <override></override>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.DirectoryUITypeEditor">
+            <summary>
+            NShape UI type editor for choosing a directory.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DirectoryUITypeEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DirectoryUITypeEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DirectoryUITypeEditor.GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <override></override>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.StyleUITypeEditor">
+            <summary>
+            NShape UI type editor for choosing a style from a drop down list.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleUITypeEditor.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.StyleUITypeEditor" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleUITypeEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleUITypeEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleUITypeEditor.GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleUITypeEditor.PaintValue(System.Drawing.Design.PaintValueEventArgs)">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.StyleUITypeEditor.Project">
+            <summary>
+            The <see cref="T:Dataweb.NShape.Project" /> providing the <see cref="T:Dataweb.NShape.Design" /> for the <see cref="T:Dataweb.NShape.WinFormsUI.StyleUITypeEditor" />.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.StyleUITypeEditor.Design">
+            <summary>
+            The design providing styles for the <see cref="T:Dataweb.NShape.WinFormsUI.StyleUITypeEditor" />.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.StyleUITypeEditor.IsDropDownResizable">
+            <override></override>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.ShapeInfoDialog">
+            <ToBeCompleted></ToBeCompleted>
+            <summary>
+            Displays information on a shape
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ShapeInfoDialog.#ctor(Dataweb.NShape.Project,Dataweb.NShape.Shape)">
+            <summary>
+            Displays a dialog showing various information on the given shape:
+            Template, shape type, shape library and the shape's control points including their capabilities and connected shapes.
+            </summary>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.ShapeInfoDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ShapeInfoDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ShapeInfoDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.ToolSetListViewPresenter">
+            <summary>
+            Connects any ListView to a NShape toolbox.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ToolSetListViewPresenter.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.ToolSetListViewPresenter" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ToolSetListViewPresenter.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.ToolSetListViewPresenter" />.
+            </summary>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.ToolSetListViewPresenter.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ToolSetListViewPresenter.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ToolSetListViewPresenter.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ToolSetListViewPresenter.ProductVersion">
+            <summary>
+            Specifies the version of the assembly containing the component.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ToolSetListViewPresenter.ToolSetController">
+            <summary>
+            The controller of this presenter.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ToolSetListViewPresenter.ListView">
+            <summary>
+            Specifies a ListView used as user interface for this presenter.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ToolSetListViewPresenter.HideDeniedMenuItems">
+            <summary>
+            Specifies if MenuItemDefs that are not granted should appear as MenuItems in the dynamic context menu.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ToolSetListViewPresenter.ShowDefaultContextMenu">
+            <summary>
+            If true, the standard context menu is created from MenuItemDefs. 
+            If false, a user defined context menu is shown without creating additional menu items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ToolSetListViewPresenter.ContextMenuStrip">
+            <summary>
+            Dynamically built standard context menu. Will be used automatically if 
+            the assigned listView has no ContextMenuStrip of its own.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.PropertyPresenter">
+            <summary>
+            Uses one or two <see cref="T:System.Windows.Forms.PropertyGrid"/> controls to edit properties of shapes, diagrams and model objects.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.PropertyPresenter.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.PropertyPresenter" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.PropertyPresenter.#ctor(Dataweb.NShape.Controllers.IPropertyController)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.PropertyPresenter" />.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.PropertyPresenter.ProductVersion">
+            <summary>
+            Specifies the version of the assembly containing the component.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.PropertyPresenter.PropertyController">
+            <summary>
+            Specifies the controller for this presenter.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.PropertyPresenter.PageCount">
+            <summary>
+            Specifies the number of property grids/pages available
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.PropertyPresenter.PrimaryPropertyGrid">
+            <summary>
+            Specifies a PropertyGrid for editing primary objects.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.PropertyPresenter.SecondaryPropertyGrid">
+            <summary>
+            Specifies a PropertyGrid for editing secondary objects.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.Display">
+            <summary>
+            A component used for displaying diagrams.
+            </summary>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.Display.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Finalize">
+            <summary>
+            Finalizer
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Advanced#IDisplayService#Invalidate(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Advanced#IDisplayService#Invalidate(System.Drawing.Rectangle)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Advanced#IDisplayService#NotifyBoundsChanged">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#InvalidateDiagram(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#InvalidateDiagram(System.Drawing.Rectangle)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#InvalidateGrips(Dataweb.NShape.Shape,Dataweb.NShape.ControlPointCapabilities)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#InvalidateGrips(System.Collections.Generic.IEnumerable{Dataweb.NShape.Shape},Dataweb.NShape.ControlPointCapabilities)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#InvalidateSnapIndicators(Dataweb.NShape.Shape)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#SuspendUpdate">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#ResumeUpdate">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#ResetTransformation">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#RestoreTransformation">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#Update">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#DrawShape(Dataweb.NShape.Shape)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#DrawShapes(System.Collections.Generic.IEnumerable{Dataweb.NShape.Shape})">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#DrawResizeGrip(Dataweb.NShape.Controllers.IndicatorDrawMode,Dataweb.NShape.Shape,Dataweb.NShape.ControlPointId)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#DrawRotateGrip(Dataweb.NShape.Controllers.IndicatorDrawMode,Dataweb.NShape.Shape,Dataweb.NShape.ControlPointId)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#DrawConnectionPoint(Dataweb.NShape.Controllers.IndicatorDrawMode,Dataweb.NShape.Shape,Dataweb.NShape.ControlPointId)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#DrawCaptionBounds(Dataweb.NShape.Controllers.IndicatorDrawMode,Dataweb.NShape.Advanced.ICaptionedShape,System.Int32)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#DrawShapeOutline(Dataweb.NShape.Controllers.IndicatorDrawMode,Dataweb.NShape.Shape)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#DrawSnapIndicators(Dataweb.NShape.Shape)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#DrawSelectionFrame(System.Drawing.Rectangle)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#DrawAnglePreview(System.Drawing.Point,System.Drawing.Point,System.Int32,System.Int32,System.Int32)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#DrawLine(System.Drawing.Point,System.Drawing.Point)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#OpenCaptionEditor(Dataweb.NShape.Advanced.ICaptionedShape,System.Int32,System.Int32)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#OpenCaptionEditor(Dataweb.NShape.Advanced.ICaptionedShape,System.Int32)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#OpenCaptionEditor(Dataweb.NShape.Advanced.ICaptionedShape,System.Int32,System.String)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#CloseCaptionEditor(System.Boolean)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#SetCursor(System.Int32)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DiagramToControl(System.Int32,System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+            Transformes diagram coordinates to control coordinates
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DiagramToControl(System.Drawing.Point,System.Drawing.Point@)">
+            <summary>
+            Transformes diagram coordinates to control coordinates
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DiagramToControl(System.Drawing.Rectangle,System.Drawing.Rectangle@)">
+            <summary>
+            Transformes diagram coordinates to control coordinates
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DiagramToControl(System.Int32,System.Int32@)">
+            <summary>
+            Transformes diagram coordinates to control coordinates
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DiagramToControl(System.Drawing.Size,System.Drawing.Size@)">
+            <summary>
+            Transformes diagram coordinates to control coordinates
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.ControlToDiagram(System.Int32,System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+            Transformes control coordinates to diagram coordinates
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.ControlToDiagram(System.Drawing.Point,System.Drawing.Point@)">
+            <summary>
+            Transformes control coordinates to diagram coordinates
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.ControlToDiagram(System.Drawing.Rectangle,System.Drawing.Rectangle@)">
+            <summary>
+            Transformes control coordinates to diagram coordinates
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.ControlToDiagram(System.Drawing.Size,System.Drawing.Size@)">
+            <summary>
+            Transformes control coordinates to diagram coordinates
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.ControlToDiagram(System.Int32,System.Int32@)">
+            <summary>
+            Transformes control coordinates to diagram coordinates
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.ScreenToDiagram(System.Drawing.Point,System.Drawing.Point@)">
+            <summary>
+            Transformes screen coordinates to diagram coordinates
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.ScreenToDiagram(System.Drawing.Rectangle,System.Drawing.Rectangle@)">
+            <summary>
+            Transformes screen coordinates to diagram coordinates
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.UnselectAll">
+            <summary>
+            Clears the current selection.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.UnselectShape(Dataweb.NShape.Shape)">
+            <summary>
+            Removes the given Shape from the current selection.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.UnselectShapes(System.Collections.Generic.IEnumerable{Dataweb.NShape.Shape})">
+            <summary>
+            Removes the given Shape from the current selection.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.SelectShape(Dataweb.NShape.Shape)">
+            <summary>
+            Selects the given shape. Current selection will be cleared.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.SelectShape(Dataweb.NShape.Shape,System.Boolean)">
+            <summary>
+            Selects the given shape.
+            </summary>
+            <param name="shape">Shape to be selected.</param>
+            <param name="addToSelection">If true, the given shape will be added to the current selection, otherwise the current selection will be cleared before selecting this shape.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.SelectShapes(System.Collections.Generic.IEnumerable{Dataweb.NShape.Shape},System.Boolean)">
+            <summary>
+            Selects the given shape.
+            </summary>
+            <param name="shapes">Shape to be selected.</param>
+            <param name="addToSelection">If true, the given shape will be added to the current selection, otherwise the current selection will be cleared before selecting this shape.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.SelectShapes(System.Drawing.Rectangle,System.Boolean)">
+            <summary>
+            Selects all shapes within the given area.
+            </summary>
+            <param name="area">All shapes in the given rectangle will be selected.</param>
+            <param name="addToSelection">If true, the given shape will be added to the current selection, otherwise the current selection will be cleared before selecting this shape.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.SelectShapes(Dataweb.NShape.Advanced.ShapeType,System.Boolean)">
+            <summary>
+            Selects all shapes of the given shape type.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.SelectShapes(Dataweb.NShape.Template,System.Boolean)">
+            <summary>
+            Selects all shapes based on the given template.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.SelectAll">
+            <summary>
+            Selects all shapes of the diagram.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.LoadDiagram(System.String)">
+            <summary>
+            Fetches the indicated diagram from the repository and displays it.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OpenDiagram(System.String)">
+            <summary>
+            Fetches the indicated diagram from the repository and displays it.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.CreateDiagram(System.String)">
+            <summary>
+            Creates the indicated diagram, inserts it into the repository and displays it.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Clear">
+            <summary>
+            Clears diagram and all buffers.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.GetMenuItemDefs">
+            <summary>
+            Returns a collection of <see cref="T:Dataweb.NShape.Advanced.MenuItemDef" /> for constructing context menus etc.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.InsertShape(Dataweb.NShape.Shape)">
+            <summary>
+            Inserts the given shape in the displayed diagram.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.InsertShapes(System.Collections.Generic.IEnumerable{Dataweb.NShape.Shape})">
+            <summary>
+            Inserts the given shapes in the displayed diagram.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DeleteShapes">
+            <summary>
+            Deletes the selected shapes.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DeleteShapes(System.Boolean)">
+            <summary>
+            Deletes the selected shapes.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DeleteShape(Dataweb.NShape.Shape)">
+            <summary>
+            Deletes the given shape in the displayed diagram.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DeleteShape(Dataweb.NShape.Shape,System.Boolean)">
+            <summary>
+            Deletes the given shape in the displayed diagram.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DeleteShapes(System.Collections.Generic.IEnumerable{Dataweb.NShape.Shape})">
+            <summary>
+            Deletes the given shapes in the displayed diagram.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DeleteShapes(System.Collections.Generic.IEnumerable{Dataweb.NShape.Shape},System.Boolean)">
+            <summary>
+            Deletes the given shapes in the displayed diagram.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Cut">
+            <summary>
+            Cuts the selected shapes.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Cut(System.Boolean)">
+            <summary>
+            Cut the selected shapes with or without model objects.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Cut(System.Boolean,System.Drawing.Point)">
+            <summary>
+            Cut the selected shapes with or without model objects.
+            </summary>
+            <param name="withModelObjects">Specifies whether the shape should be copied with its model objects (if assigned).</param>
+            <param name="mousePosDiagram">Current Mouse position in diagram coordinates.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Copy">
+            <summary>
+            Copies the selected shapes.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Copy(System.Boolean)">
+            <summary>
+            Copy the selected shapes with or without model objects.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Copy(System.Boolean,System.Drawing.Point)">
+            <summary>
+            Copy the selected shapes with or without model objects.
+            </summary>
+            <param name="withModelObjects">Specifies whether the shape should be copied with its model objects (if assigned).</param>
+            <param name="mousePosDiagram">Current Mouse position in diagram coordinates.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Paste">
+            <summary>
+            Pastes the previously copied or cut shapes into the displayed diagram.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Paste(System.Drawing.Point)">
+            <summary>
+            Paste the copied or cut shapes.
+            </summary>
+            <param name="mousePosDiagram">Current mouse position in diagram coordinates.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Paste(System.Int32,System.Int32)">
+            <summary>
+            Paste the copied or cut shapes.
+            </summary>
+            <param name="offsetX">Horizontal offset in diagram coordinates relative to the original shape's X coordinate.</param>
+            <param name="offsetY">Vertical offset in diagram coordinates relative to the original shape's Y coordinate.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.Delete(System.Boolean)">
+            <summary>
+            Delete the selected shapes with or without model objects.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.EnsureVisible(System.Int32,System.Int32)">
+            <summary>
+            Ensures that the given coordinates are inside the displayed area by scrolling the display to the given position.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.EnsureVisible(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Ensures that the given coordinates are inside the displayed area by scrolling the display to the given position.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.EnsureVisible(Dataweb.NShape.Shape)">
+            <summary>
+            Ensures that the given shape is inside the displayed area.
+            </summary>
+            <param name="shape">The shape that should be completely visible.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.EnsureVisible(Dataweb.NShape.Shape,System.Int32)">
+            <summary>
+            Ensures that the given shape is inside the displayed area.
+            </summary>
+            <param name="shape">The shape that should be completely visible.</param>
+            <param name="margin">Specifies the margin (in diagram coordinates) around the area that should be visible.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.EnsureVisible(System.Drawing.Rectangle)">
+            <summary>
+            Ensures that the given area is inside the displayed area.
+            </summary>
+            <param name="viewAreaDiagram">The area (in diagram coordinates) that should be visible.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.EnsureVisible(System.Drawing.Rectangle,System.Int32)">
+            <summary>
+            Ensures that the given area is inside the displayed area.
+            </summary>
+            <param name="viewAreaDiagram">The area (in diagram coordinates) that should be visible.</param>
+            <param name="margin">Specifies the margin (in diagram coordinates) around the area that should be visible.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.SetLayerVisibility(Dataweb.NShape.Advanced.LayerIds,System.Boolean)">
+            <summary>
+            Shows or hides the given layers.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.SetLayerActive(Dataweb.NShape.Advanced.LayerIds,System.Boolean)">
+            <summary>
+            Sets the given layers as active layers.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.IsLayerVisible(Dataweb.NShape.Advanced.LayerIds)">
+            <summary>
+            Tests whether any of the given layers is visible.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.IsLayerActive(Dataweb.NShape.Advanced.LayerIds)">
+            <summary>
+            Tests whether all of the given layers are active.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.CopyImageToClipboard(Dataweb.NShape.ImageFileFormat,System.Boolean)">
+            <summary>
+            Copies the selected shapes (or the whole diagram if no shapes are selected) as image of the specified format to the clipboard.
+            </summary>
+            <param name="fileFormat">Format of the image that will be copied to the clipboard.</param>
+            <param name="clearClipboard">Specifies if the clipboard should be emptied before copying the image.</param>
+            <remarks>When not clearing the clipboard before adding the an image, you can add a bitmap- and a vector images to the clipboard.</remarks>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnShapesSelected(System.EventArgs)">
+            <ToBeCompleted></ToBeCompleted>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnShapeClick(Dataweb.NShape.Controllers.DiagramPresenterShapeClickEventArgs)">
+            <ToBeCompleted></ToBeCompleted>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnShapeDoubleClick(Dataweb.NShape.Controllers.DiagramPresenterShapeClickEventArgs)">
+            <ToBeCompleted></ToBeCompleted>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnShapesInserted(Dataweb.NShape.Controllers.DiagramPresenterShapesEventArgs)">
+            <ToBeCompleted></ToBeCompleted>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnShapesRemoved(Dataweb.NShape.Controllers.DiagramPresenterShapesEventArgs)">
+            <ToBeCompleted></ToBeCompleted>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnLayerVisibilityChanged(Dataweb.NShape.Controllers.LayersEventArgs)">
+            <ToBeCompleted></ToBeCompleted>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnActiveLayersChanged(Dataweb.NShape.Controllers.LayersEventArgs)">
+            <ToBeCompleted></ToBeCompleted>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnZoomChanged(System.EventArgs)">
+            <ToBeCompleted></ToBeCompleted>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnDiagramChanging(System.EventArgs)">
+            <ToBeCompleted></ToBeCompleted>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnDiagramChanged(System.EventArgs)">
+            <ToBeCompleted></ToBeCompleted>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnUserMessage(Dataweb.NShape.Controllers.UserMessageEventArgs)">
+            <ToBeCompleted></ToBeCompleted>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnGotFocus(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnLostFocus(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnMouseWheel(System.Windows.Forms.MouseEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnMouseClick(System.Windows.Forms.MouseEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnMouseDoubleClick(System.Windows.Forms.MouseEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnMouseEnter(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnMouseLeave(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnMouseMove(System.Windows.Forms.MouseEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnMouseCaptureChanged(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnPreviewKeyDown(System.Windows.Forms.PreviewKeyDownEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnKeyDown(System.Windows.Forms.KeyEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnKeyUp(System.Windows.Forms.KeyEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnKeyPress(System.Windows.Forms.KeyPressEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnDragEnter(System.Windows.Forms.DragEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnDragOver(System.Windows.Forms.DragEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnDragDrop(System.Windows.Forms.DragEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnDragLeave(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnContextMenuStripChanged(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnScroll(System.Windows.Forms.ScrollEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnResize(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnLayout(System.Windows.Forms.LayoutEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnInvalidated(System.Windows.Forms.InvalidateEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnPaintBackground(System.Windows.Forms.PaintEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.NotifyInvalidate(System.Drawing.Rectangle)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DrawResizeGripCore(System.Int32,System.Int32,Dataweb.NShape.Controllers.IndicatorDrawMode)">
+            <summary>
+            Draws a resize grip at the given position.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DrawRotateGripCore(System.Int32,System.Int32,Dataweb.NShape.Controllers.IndicatorDrawMode)">
+            <summary>
+            Draws a resize grip at the given position.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DrawConnectionPointCore(System.Int32,System.Int32,Dataweb.NShape.Controllers.IndicatorDrawMode,System.Boolean)">
+            <summary>
+            Draws a connection point at the given position. 
+            If the connection point is also a resize grip, the resize grip will be drawn, too.
+            If the connection point is a is point-to-shape connected glue point, the outline of the connected shape will be highlighted.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DrawConnectionPointCore(System.Int32,System.Int32,Dataweb.NShape.Controllers.IndicatorDrawMode,System.Boolean,Dataweb.NShape.ShapeConnectionInfo)">
+            <summary>
+            Draws a connection point at the given position. 
+            If the connection point is also a resize grip, the resize grip will be drawn, too.
+            If the connection point is a is point-to-shape connected glue point, the outline of the connected shape will be highlighted.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.IsInputKey(System.Windows.Forms.Keys)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DoSuspendUpdate">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DoResumeUpdate">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DoInvalidateShape(Dataweb.NShape.Shape)">
+            <summary>
+            Invalidates the shape (or its parent(s)) along with all ControlPoints
+            </summary>
+            <param name="shape"></param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DoDrawCaptionBounds(Dataweb.NShape.Controllers.IndicatorDrawMode,Dataweb.NShape.Advanced.ICaptionedShape)">
+            <summary>
+            Draws the bounds of all captions of the shape
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DoDrawControlPointPath(System.Drawing.Drawing2D.GraphicsPath,System.Int32,System.Int32,System.Drawing.Pen,System.Drawing.Brush)">
+            <summary>
+            Translates and draws the given ControlPoint path at the given position (diagram coordinates).
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DrawControl(System.Drawing.Rectangle)">
+            <summary>
+            Draw the display control including the diagram's shadow (if a diagram is displayed)
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DrawDiagram(System.Drawing.Rectangle)">
+            <summary>
+            Draw the diagram, selection indicators and other stuff
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DoCloseCaptionEditor(System.Boolean)">
+            <summary>
+            Closes the caption editor.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.ClearSelection">
+            <summary>
+            Invalidate all selected Shapes and their ControlPoints before clearing the selection
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DoUnselectShape(Dataweb.NShape.Shape)">
+            <summary>
+            Removes the shape from the list of selected shapes and invalidates the shape and its ControlPoints
+            </summary>
+            <param name="shape"></param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DoSelectShape(Dataweb.NShape.Shape,System.Boolean)">
+            <summary>
+            Checks if the shape has a parent and handles ShapeAggregation selection in case.
+            </summary>
+            <param name="shape">The shape that has to be selected</param>
+            <param name="addToSelection">Specifies whether the given shape is added to the current selection or the currenty selected shapes will be unseleted.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.AddShapesToSelection(System.Collections.Generic.IEnumerable{Dataweb.NShape.Shape})">
+            <summary>
+            Adds the shapes to the list of selected shapes and invalidates the shapes and their controlPoints
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.AddShapeToSelection(Dataweb.NShape.Shape)">
+            <summary>
+            Adds the shapes to the list of selected shapes and invalidates the shape and its controlPoints
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.PerformSelectionNotifications">
+            <summary>
+            Enables/disables all ownerDisplay context menu items that are not suitable depending on the selected shapes. 
+            Raises the ShapesSelected event.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.DrawBoundsContainsPoint(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns truw if the given point (control coordinates) is inside the auto scroll area
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.StartSelectingChangedShapes">
+            <summary>
+            Starts collecting shapes that were changed by executing a DiagramController action.
+            These shapes will be selected after the action was executed.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.EndSelectingChangedShapes">
+            <summary>
+            Ends collecting shapes that were changed by executing a DiagramController action.
+            These shapes will be selected after the action was executed.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.CreateNewClones(Dataweb.NShape.ShapeCollection,System.Boolean)">
+            <summary>
+            Replaces all the shapes with clones and clears their DisplayServices
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.Display.CreateNewClones(Dataweb.NShape.ShapeCollection,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Replaces all the shapes with clones and clears their DisplayServices
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Advanced#IDisplayService#InfoGraphics">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Advanced#IDisplayService#HintBackgroundStyle">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Advanced#IDisplayService#HintForegroundStyle">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#DisplayService">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.Dataweb#NShape#Controllers#IDiagramPresenter#ZoomedGripSize">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.Display.ShapesSelected">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.Display.ShapeClick">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.Display.ShapeDoubleClick">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.Display.ShapesInserted">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.Display.ShapesRemoved">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.Display.ShapeMoved">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.Display.ShapeResized">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.Display.ShapeRotated">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.Display.LayerVisibilityChanged">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.Display.ActiveLayersChanged">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.Display.ZoomChanged">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.Display.DiagramChanging">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.Display.DiagramChanged">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.Display.UserMessage">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.DiagramSetController">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.Diagram">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.Project">
+            <summary>
+            Provides access to a <see cref="T:Dataweb.NShape.Project" />.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.SelectedShapes">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ActiveLayers">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.HiddenLayers">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ProductVersion">
+            <summary>
+            Specifies the version of the assembly containing the component.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.PropertyController">
+            <summary>
+            The PropertyController for editing shapes, model objects and diagrams.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ActiveTool">
+            <summary>
+            The currently active tool.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.CurrentTool">
+            <summary>
+            The currently active tool.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.DrawBounds">
+            <summary>
+            Bounds of the display's drawing area (client area minus scroll bars) in control coordinates
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ContextMenuStrip">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.HideDeniedMenuItems">
+            <summary>
+            Specifies if MenuItemDefs that are not granted should appear as MenuItems in the dynamic context menu.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ZoomWithMouseWheel">
+            <summary>
+            Enables or disables direct zooming with mouse wheel.
+            True means zooming when rotating the mouse wheel,
+            False means zooming when pressing Ctrl and rotating the mouse wheel.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ShowScrollBars">
+            <summary>
+            Shows or hides scroll bars.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.SnapToGrid">
+            <summary>
+            Enables or disables snapping of shapes and control points to grid lines.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.SnapDistance">
+            <summary>
+            Specifies the distance for snapping shapes and control points to grid lines.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ShowDefaultContextMenu">
+            <summary>
+            If true, the standard context menu is created from MenuItemDefs. 
+            If false, a user defined context menu is shown without creating additional menu items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.MinRotateRange">
+            <summary>
+            Specifies the minimum distance of the mouse cursor from the shape's rotate point while rotating.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ZoomLevel">
+            <summary>
+            Zoom in percentage.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.GridSize">
+            <summary>
+            Specifies the distance between the grid lines.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.GripSize">
+            <summary>
+            The radius of a control point grip from the center to the outer handle bound.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ShowGrid">
+            <summary>Will soon be removed. Use IsGridVisible instead.</summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.IsGridVisible">
+            <summary>
+            Specifies whether grid lines should be visible.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.IsSheetVisible">
+            <summary>Specifies whether the diagram sheet (including its shadow) is visible or not.</summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.HighQualityRendering">
+            <summary>
+            Specifies whether high quality rendering settings should be allpied.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.HighQualityBackground">
+            <summary>
+            Specifies whether the control's background should bew rendered in high quality.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ResizeGripShape">
+            <summary>
+            Specifies the shape of grips used for resizing shapes.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ConnectionPointShape">
+            <summary>
+            Specifies the shape of connection points provided by a shape.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.BackgroundGradientAngle">
+            <summary>
+            Specifies the angle of the background color gradient.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.BackColor">
+            <summary>
+            Specifies the control's background color. This defines also the base color of the color gradient.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.BackColorGradient">
+            <summary>
+            Specifies the gradient color of the background color gradient.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.GridAlpha">
+            <summary>
+            Specifies the transparency of the grid lines.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ControlPointAlpha">
+            <summary>
+            Specifies the transparenc of control point grips.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.GridColor">
+            <summary>
+            Specifies the color of the grid lines.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.SelectionInteriorColor">
+            <summary>
+            Specifies the inner color of the selection indicator.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.SelectionNormalColor">
+            <summary>
+            Specifies the color of the selection indicator.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.SelectionHilightColor">
+            <summary>
+            Specifies the color of a highlighted selection.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.SelectionInactiveColor">
+            <summary>
+            Specifies the color of an inactive/deactivated selection.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ToolPreviewColor">
+            <summary>
+            Specifies the color of tool preview hints.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ToolPreviewBackColor">
+            <summary>
+            Specifies the color the background color of tool preview hints.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.RenderingQualityHighQuality">
+            <summary>
+            Specifies the rendering quality in high quality mode
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.RenderingQualityLowQuality">
+            <summary>
+            Specifies the rendering quality in low quality mode
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.DiagramController">
+            <summary>
+            This DiagramPresenter's controller.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.DiagramBounds">
+            <summary>
+            The bounds of the diagram 'sheet'.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Display.ScrollAreaBounds">
+            <summary>
+            The bounds of the scrollable area: The bounds of the diagram including all its shapes (also shapes beside the diagram 'sheet') and the scroll margin.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.WinFormHelpers">
+            <summary>
+            Helper class implementing methods for converting NShape classes and types to WinForms specific classes and types.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.WinFormHelpers.GetMouseEventArgs(System.Windows.Forms.Control,Dataweb.NShape.Controllers.MouseEventType,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Extracts and returns NShapeMouseEventArgs from <see cref="T:Windows.Forms.MouseEventArgs" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.WinFormHelpers.GetMouseEventArgs(System.Windows.Forms.Control,Dataweb.NShape.Controllers.MouseEventType,System.Windows.Forms.MouseEventArgs,System.Drawing.Rectangle)">
+            <summary>
+            Extracts and returns NShapeMouseEventArgs from <see cref="T:Windows.Forms.MouseEventArgs" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.WinFormHelpers.GetMouseEventArgs(System.Windows.Forms.Control,Dataweb.NShape.Controllers.MouseEventType,System.Int32,System.Int32)">
+            <summary>
+            Returns NShapeMouseEventArgs extracted from information provided by the <see cref="T:System.Windows.Forms.Control" /> class.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.WinFormHelpers.GetMouseEventArgs(System.Windows.Forms.Control,Dataweb.NShape.Controllers.MouseEventType,System.Windows.Forms.MouseButtons,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns NShapeMouseEventArgs buildt with the provided parameters
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.WinFormHelpers.GetMouseEventArgs(System.Windows.Forms.Control,Dataweb.NShape.Controllers.MouseEventType,System.Windows.Forms.MouseButtons,System.Int32,System.Int32,System.Int32,System.Int32,System.Drawing.Rectangle)">
+            <summary>
+            Returns NShapeMouseEventArgs buildt with the provided parameters
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.WinFormHelpers.GetKeyEventArgs(Dataweb.NShape.Controllers.KeyEventType,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Extracts and returns KeyEventArgs from Windows.Forms.KeyEventArgs
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.WinFormHelpers.GetKeyEventArgs(System.Windows.Forms.PreviewKeyDownEventArgs)">
+            <summary>
+            Extracts and returns KeyEventArgs from Windows.Forms.PreviewKeyDownEventArgs
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.WinFormHelpers.GetKeyEventArgs(System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            Extracts and returns KeyEventArgs from Windows.Forms.KeyPressEventArgs
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.WinFormHelpers.GetKeyEventArgs(Dataweb.NShape.Controllers.KeyEventType,System.Char,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Returns KeyEventArgs built with the provided parameters
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.WinFormHelpers.GetContextMenuItemsFromAllowedActions(System.Collections.Generic.IEnumerable{Dataweb.NShape.Advanced.MenuItemDef},Dataweb.NShape.Project)">
+            <summary>
+            Creates a collection of ToolStripMenuItems from a collection of MenuItemDefs. Actions that are not allowed will be skipped.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.WinFormHelpers.GetContextMenuItemsFromActions(System.Collections.Generic.IEnumerable{Dataweb.NShape.Advanced.MenuItemDef},Dataweb.NShape.Project)">
+            <summary>
+            Creates a collection of ToolStripMenuItems from a collection of MenuItemDefs. 
+            Actions that are not allowed will disabled and their tool tip displays the reason.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.WinFormHelpers.BuildContextMenu(System.Windows.Forms.ContextMenuStrip,System.Collections.Generic.IEnumerable{Dataweb.NShape.Advanced.MenuItemDef},Dataweb.NShape.Project,System.Boolean)">
+            <summary>
+            Fills the given ContextMenuStrip with ToolStripItems created from the given collection of MenuItemDefs.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.WinFormHelpers.BuildContextMenu(System.Windows.Forms.ContextMenuStrip,System.Collections.Generic.IEnumerable{System.Windows.Forms.ToolStripItem})">
+            <summary>
+            Fills the given ContextMenuStrip with ToolStripItems created from the given collection of MenuItemDefs.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.WinFormHelpers.CleanUpContextMenu(System.Windows.Forms.ContextMenuStrip)">
+            <summary>
+            Removes all ToolStripItems formerly created from MenuItemDefs.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.ImageEditor">
+            <summary>
+            UI type editor for properties of type NamedImage.
+            </summary>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.ImageEditor.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ImageEditor.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ImageEditor.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ImageEditor.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.ImageEditor" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ImageEditor.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.ImageEditor" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ImageEditor.#ctor(System.Drawing.Image,System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.ImageEditor" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ImageEditor.#ctor(System.Drawing.Image)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.ImageEditor" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ImageEditor.#ctor(Dataweb.NShape.Advanced.NamedImage)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.ImageEditor" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ImageEditor.OnShown(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ImageEditor.OnFormClosed(System.Windows.Forms.FormClosedEventArgs)">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ImageEditor.Result">
+            <summary>
+            Specifies the image selected by the user.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.DesignEditorDialog">
+            <summary>
+            A dialog used for creating and editing designs and styles
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignEditorDialog.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.DesignEditorDialog" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignEditorDialog.#ctor(Dataweb.NShape.Project)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.DesignEditorDialog" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignEditorDialog.#ctor(Dataweb.NShape.Project,Dataweb.NShape.StyleCategory)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.DesignEditorDialog" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignEditorDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.DesignEditorDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignEditorDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignEditorDialog.Project">
+            <summary>
+            Provides access to a <see cref="T:Dataweb.NShape.Project" />.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.LayerListView">
+            <summary>
+            ListView component implementing the ILayerView interface.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.LayerListView" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.AddLayer(Dataweb.NShape.Advanced.Layer,System.Boolean,System.Boolean)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.RefreshLayer(Dataweb.NShape.Advanced.Layer,System.Boolean,System.Boolean)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.RemoveLayer(Dataweb.NShape.Advanced.Layer)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.BeginEditLayerName(Dataweb.NShape.Advanced.Layer)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.BeginEditLayerMinZoomBound(Dataweb.NShape.Advanced.Layer)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.BeginEditLayerMaxZoomBound(Dataweb.NShape.Advanced.Layer)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.OpenContextMenu(System.Int32,System.Int32,System.Collections.Generic.IEnumerable{Dataweb.NShape.Advanced.MenuItemDef},Dataweb.NShape.Project)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.Dataweb#NShape#Controllers#ILayerView#Invalidate">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.OnMouseMove(System.Windows.Forms.MouseEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.OnSelectedIndexChanged(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.OnBeforeLabelEdit(System.Windows.Forms.LabelEditEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.OnAfterLabelEdit(System.Windows.Forms.LabelEditEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.OnDrawColumnHeader(System.Windows.Forms.DrawListViewColumnHeaderEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.OnDrawItem(System.Windows.Forms.DrawListViewItemEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.OnDrawSubItem(System.Windows.Forms.DrawListViewSubItemEventArgs)">
+            <override></override>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.LayerListView.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayerListView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.LayerListView.SelectedLayerChanged">
+            <summary>
+            Raised when a layer was selected.
+            </summary>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.LayerListView.LayerRenamed">
+            <summary>
+            Raised when a layer was renamed.
+            </summary>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.LayerListView.LayerUpperZoomThresholdChanged">
+            <summary>
+            Raised when the upper zoom treshold was changed.
+            </summary>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.LayerListView.LayerLowerZoomThresholdChanged">
+            <summary>
+            Raised when the lower zoom treshold was changed.
+            </summary>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.LayerListView.LayerViewMouseDown">
+            <summary>
+            Raised when a mouse button was pressed inside the control's boundaries.
+            </summary>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.LayerListView.LayerViewMouseMove">
+            <summary>
+            Raised when the mouse was moved over the control.
+            </summary>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.LayerListView.LayerViewMouseUp">
+            <summary>
+            Raised when a mouse button was released inside the control's boundaries.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.LayerListView.ProductVersion">
+            <summary>
+            Specifies the version of the assembly containing the component.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.LayerListView.HideDeniedMenuItems">
+            <summary>
+            Specifies if MenuItemDefs that are not granted should appear as MenuItems in the dynamic context menu.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.LayerListView.ShowDefaultContextMenu">
+            <summary>
+            If true, the standard context menu is created from MenuItemDefs. 
+            If false, a user defined context menu is shown without creating additional menu items.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.LayoutDialog">
+            <summary>
+            A dialog used for layouting shapes on a diagram.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayoutDialog.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.LayoutDialog" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayoutDialog.#ctor(Dataweb.NShape.Layouters.ILayouter)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.LayoutDialog" />.
+            </summary>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.LayoutDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayoutDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LayoutDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.LayoutDialog.LayoutChanged">
+            <summary>
+            Raised when the layout changed.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.LayoutDialog.Project">
+            <summary>
+            Provides access to a <see cref="T:Dataweb.NShape.Project" />.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.LayoutDialog.Diagram">
+            <summary>
+            Specifies the diagram of the layouted shapes.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.LayoutDialog.SelectedShapes">
+            <summary>
+            Specifies the shapes to be layouted.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.DesignPresenter">
+            <summary>
+            A DesignPresenter user control.
+            </summary>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.DesignPresenter.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignPresenter.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignPresenter.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.DesignPresenter" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignPresenter.Finalize">
+            <summary>
+            Finalizer of Dataweb.NShape.WinFormsUI.DesignPresenter
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignPresenter.Dataweb#NShape#Advanced#IDisplayService#Invalidate(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignPresenter.Dataweb#NShape#Advanced#IDisplayService#Invalidate(System.Drawing.Rectangle)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignPresenter.Dataweb#NShape#Advanced#IDisplayService#NotifyBoundsChanged">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignPresenter.CreateDesign">
+            <summary>
+            Creates a new design.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignPresenter.DeleteSelectedDesign">
+            <summary>
+            Deletes the selected design.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignPresenter.CreateStyle">
+            <summary>
+            Create an new style.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignPresenter.DeleteSelectedStyle">
+            <summary>
+            Delete the selected style.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignPresenter.ActivateDesign(Dataweb.NShape.Design)">
+            <summary>
+             Activates the selected design as the project's design.
+            </summary>
+            <param name="design"></param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DesignPresenter.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.Dataweb#NShape#Advanced#IDisplayService#InfoGraphics">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.Dataweb#NShape#Advanced#IDisplayService#HintBackgroundStyle">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.Dataweb#NShape#Advanced#IDisplayService#HintForegroundStyle">
+            <override></override>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.DesignPresenter.DesignSelected">
+            <summary>
+            Raised when a design was selected.
+            </summary>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.DesignPresenter.StyleSelected">
+            <summary>
+            Raised when a style was selected.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.ProductVersion">
+            <summary>
+            Specifies the version of the assembly containing the component.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.Project">
+            <summary>
+            Provides access to a <see cref="T:Dataweb.NShape.Project" />.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.DesignController">
+            <summary>
+            The design controller component
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.SelectedDesign">
+            <summary>
+            The selected design.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.SelectedStyleCategory">
+            <summary>
+            The selected style
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.SelectedStyle">
+            <summary>
+            The selected style
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.InactiveItemBackgroundColor">
+            <summary>
+            Background color of inactive items
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.HighlightedItemColor">
+            <summary>
+            Fill color of highlighted items
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.SelectedItemColor">
+            <summary>
+            Fill color of selected items
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.InactiveItemBorderColor">
+            <summary>
+            Border color of inactive items
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.FocusedItemColor">
+            <summary>
+            Fill color of focused items
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.FocusBorderColor">
+            <summary>
+            Border color of focused items
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.SelectedItemTextColor">
+            <summary>
+            Text color of selected items
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.InactiveItemTextColor">
+            <summary>
+            Text color of selected items
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.DesignPresenter.HighlightItems">
+            <summary>
+            Specifies if Items should be highlighted.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.LibraryManagementDialog">
+            <summary>
+            Dialog used for loading NShape libraries into the current NShape project.
+            </summary>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.LibraryManagementDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LibraryManagementDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LibraryManagementDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.LibraryManagementDialog.#ctor(Dataweb.NShape.Project)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.LibraryManagementDialog" />.
+            </summary>
+            <param name="project"></param>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.VerticalTabControl">
+            <summary>
+            A vertical tab control component.
+            </summary>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.VerticalTabControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.VerticalTabControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.VerticalTabControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.VerticalTabControl.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.VerticalTabControl" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.VerticalTabControl.OnMeasureItem(System.Windows.Forms.MeasureItemEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.VerticalTabControl.OnDrawItem(System.Windows.Forms.DrawItemEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.VerticalTabControl.OnPaintBackground(System.Windows.Forms.PaintEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.VerticalTabControl.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.VerticalTabControl.ProductVersion">
+            <summary>
+            Specifies the version of the assembly containing the component.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.VerticalTabControl.InactiveItemBackgroundColor">
+            <summary>
+            Specifies the background color for inactive items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.VerticalTabControl.HighlightedItemColor">
+            <summary>
+            Specifies the fill color of highlighted items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.VerticalTabControl.SelectedItemColor">
+            <summary>
+            Specifies the fill color of selected items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.VerticalTabControl.InactiveItemBorderColor">
+            <summary>
+            Specifies the border color of inactive items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.VerticalTabControl.FocusedItemColor">
+            <summary>
+            Specifies the background color of focussed items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.VerticalTabControl.FocusBorderColor">
+            <summary>
+            Specifies the border color of focussed items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.VerticalTabControl.SelectedItemTextColor">
+            <summary>
+            Specifies the text color of selected items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.VerticalTabControl.InactiveItemTextColor">
+            <summary>
+            Specifies the text color of inactive items.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.TextEditorDialog">
+            <summary>
+            A simple text editor dialog used by ui type editors for text properties.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextEditorDialog.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.TextUITypeEditorDialog" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextEditorDialog.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.TextUITypeEditorDialog" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextEditorDialog.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.TextUITypeEditorDialog" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextEditorDialog.#ctor(System.String,Dataweb.NShape.ICharacterStyle)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.TextUITypeEditorDialog" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextEditorDialog.#ctor(System.String,System.String,System.Single,System.Drawing.FontStyle)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.TextUITypeEditorDialog" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextEditorDialog.#ctor(System.Collections.Generic.IEnumerable{System.String},Dataweb.NShape.CharacterStyle)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.TextUITypeEditorDialog" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextEditorDialog.#ctor(System.Collections.Generic.IEnumerable{System.String},System.String,System.Single,System.Drawing.FontStyle)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.TextUITypeEditorDialog" />.
+            </summary>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.TextEditorDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextEditorDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TextEditorDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.TextEditorDialog.WordWrap">
+            <summary>
+            Indicates whether the displayed text should automatically wrap words to the beginning of the new line when necessary.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.TextEditorDialog.TextAlignment">
+            <summary>
+            Sets the horizontal alignment of the displayed text.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.TextEditorDialog.ResultText">
+            <summary>
+            Gets or sets the current text to be edited.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.TextEditorDialog.Lines">
+            <summary>
+            Gets or sets the current multiline text to be edited.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.TextEditorDialog.WantTab">
+            <summary>
+            Specifies whether the user can insert tab characters into the text using the TAB key.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.TextEditorDialog.WantReturn">
+            <summary>
+            Specifies whether the user can insert line breaks using the RETURN key.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.TemplateEditorDialog">
+            <summary>
+            Dialog used for creating and editing templates.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplateEditorDialog.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.TemplateEditorDialog" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplateEditorDialog.#ctor(Dataweb.NShape.Project,Dataweb.NShape.Template)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.TemplateEditorDialog" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplateEditorDialog.#ctor(Dataweb.NShape.Project)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.TemplateEditorDialog" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.TemplateEditorDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.TemplateEditorDialog.Project">
+            <summary>
+            Provides access to a <see cref="T:Dataweb.NShape.Project" />.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.TemplateEditorDialog.Template">
+            <summary>
+            Specifies the template being edited.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleListBox.Sort">
+            <summary>Sorts the items in the <see cref="T:System.Windows.Forms.ListBox"></see>.</summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleListBox.OnKeyUp(System.Windows.Forms.KeyEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleListBox.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleListBox.OnResize(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleListBox.OnPaintBackground(System.Windows.Forms.PaintEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleListBox.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleListBox.OnMeasureItem(System.Windows.Forms.MeasureItemEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleListBox.OnDrawItem(System.Windows.Forms.DrawItemEventArgs)">
+            <override></override>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.StyleListBox.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleListBox.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.StyleListBox.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.StyleListBox.ProductVersion">
+            <summary>
+            Specifies the version of the assembly containing the component.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.InPlaceTextBox">
+            <summary>
+            RichTextBox control used for editing captions of shapes on the diagram.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.InPlaceTextBox.#ctor(Dataweb.NShape.Controllers.IDiagramPresenter,Dataweb.NShape.Advanced.ICaptionedShape,System.Int32,System.String)">
+            <summary>
+            Creates a new instance of Dataweb.NShape.WinFormsUI.InPlaceTextBox.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.InPlaceTextBox.#ctor(Dataweb.NShape.Controllers.IDiagramPresenter,Dataweb.NShape.Advanced.ICaptionedShape,System.Int32,System.String,System.String)">
+            <summary>
+            Creates a new instance of Dataweb.NShape.WinFormsUI.InPlaceTextBox.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.InPlaceTextBox.InvalidateEx">
+            <summary>
+            Extended version of the Invalidate method, invalidates the control itself and its parent control.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.InPlaceTextBox.OnMove(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.InPlaceTextBox.OnResize(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.InPlaceTextBox.OnHScroll(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.InPlaceTextBox.OnVScroll(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.InPlaceTextBox.NotifyInvalidate(System.Drawing.Rectangle)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.InPlaceTextBox.OnInvalidated(System.Windows.Forms.InvalidateEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.InPlaceTextBox.OnTextChanged(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.InPlaceTextBox.OnSelectionChanged(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.InPlaceTextBox.OnVisibleChanged(System.EventArgs)">
+            <override></override>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.InPlaceTextBox.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.InPlaceTextBox.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.InPlaceTextBox.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.InPlaceTextBox.ProductVersion">
+            <summary>
+            Specifies the version of the assembly containing the component.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.InPlaceTextBox.TextAlignment">
+            <summary>
+            Specifies the text's alignment
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.InPlaceTextBox.OriginalText">
+            <summary>
+            Specifies the initial, unmodified text.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.InPlaceTextBox.Text">
+            <summary>
+            Specifies the text to be edited.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.InPlaceTextBox.CreateParams">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.InPlaceTextBox.DefaultPadding">
+            <override></override>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.ActivateDesign">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.AddToLayer">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.AggregateShapeBtn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.AssignToLayer">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionFmt_SelectAllShapesBasedOnTemplate0">
+            <summary>
+              Looks up a localized string similar to Select all shapes based on template &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionFmt_SelectAllShapesOfType0">
+            <summary>
+              Looks up a localized string similar to Select all shapes of type &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_AddShapesToActiveLayers">
+            <summary>
+              Looks up a localized string similar to Add shapes to active layers.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_AggregateShapes">
+            <summary>
+              Looks up a localized string similar to Aggregate Shapes.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_AssignShapesToActiveLayers">
+            <summary>
+              Looks up a localized string similar to Assign shapes to active layers.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_BringToFront">
+            <summary>
+              Looks up a localized string similar to Bring to Front.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_Copy">
+            <summary>
+              Looks up a localized string similar to Copy.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_CopyAsImage">
+            <summary>
+              Looks up a localized string similar to Copy as Image.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_Cut">
+            <summary>
+              Looks up a localized string similar to Cut.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_Delete">
+            <summary>
+              Looks up a localized string similar to Delete.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_DisaggregateShapes">
+            <summary>
+              Looks up a localized string similar to Disaggregate Shapes.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_GroupSelect">
+            <summary>
+              Looks up a localized string similar to Select....
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_GroupShapes">
+            <summary>
+              Looks up a localized string similar to Group Shapes.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_Paste">
+            <summary>
+              Looks up a localized string similar to Paste.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_Properties">
+            <summary>
+              Looks up a localized string similar to Properties.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_Redo">
+            <summary>
+              Looks up a localized string similar to Redo.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_RemoveShapesFromAllLayers">
+            <summary>
+              Looks up a localized string similar to Remove shapes from all layers.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_SelectAll">
+            <summary>
+              Looks up a localized string similar to Select all.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_SelectAllShapesBasedOnATemplate">
+            <summary>
+              Looks up a localized string similar to Select all shapes based on a template.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_SelectAllShapesOfAType">
+            <summary>
+              Looks up a localized string similar to Select all shapes of a type.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_SendToBack">
+            <summary>
+              Looks up a localized string similar to Send to Back.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_ShapeInfo">
+            <summary>
+              Looks up a localized string similar to Shape Info.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_Undo">
+            <summary>
+              Looks up a localized string similar to Undo.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_UngroupShapes">
+            <summary>
+              Looks up a localized string similar to Ungroup Shapes.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CaptionTxt_UnselectAll">
+            <summary>
+              Looks up a localized string similar to Unselect all.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.Checked">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CopyAsImage">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CopyBtn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CopyDiagram">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.CutBtn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.DeleteBtn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.DiagramPropertiesBtn3">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.Disabled">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.Enabled">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.GroupBtn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.Information">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.Invisible">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.Layers">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.ModelObjectAttached">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.ModelObjectDetached">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.NewBtn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.NewItemsBtn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.NewLayer">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.PasteBtn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.RedoBtn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.RemoveFromAllLayers">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.RenameBtn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.SplitShapeAggregationBtn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.ToBackground">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.ToForeground">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Add0ShapesToLayer1">
+            <summary>
+              Looks up a localized string similar to Add {0} shapes to {1}..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_AddShape0ToLayer1">
+            <summary>
+              Looks up a localized string similar to Add {0} to {1}..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Aggregate0ShapesAsCompositeShape">
+            <summary>
+              Looks up a localized string similar to Aggregate {0} shapes as composite shape..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Assign0ShapesToLayer1">
+            <summary>
+              Looks up a localized string similar to Assign {0} shapes to {1}..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_AssignShape0ToLayer1">
+            <summary>
+              Looks up a localized string similar to Assign {0} shape to {1}..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Bring0ShapesToFront">
+            <summary>
+              Looks up a localized string similar to Bring {0} shapes to foreground..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Bring0ToFront">
+            <summary>
+              Looks up a localized string similar to Bring {0} shape to foreground..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Copy0Shapes">
+            <summary>
+              Looks up a localized string similar to Copy {0} shapes..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_CopyShape0">
+            <summary>
+              Looks up a localized string similar to Copy {0} shape..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Cut0Shapes">
+            <summary>
+              Looks up a localized string similar to Cut {0} shapes..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_CutShape0">
+            <summary>
+              Looks up a localized string similar to Cut {0} shape..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Delete0Shapes">
+            <summary>
+              Looks up a localized string similar to Delete {0} shapes..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_DeleteShape0">
+            <summary>
+              Looks up a localized string similar to Delete {0} shape..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Group0Shapes">
+            <summary>
+              Looks up a localized string similar to Group {0} shapes..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_LayerByName">
+            <summary>
+              Looks up a localized string similar to layer {0}.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_LayersByName">
+            <summary>
+              Looks up a localized string similar to layers {0}.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_MoreThan1ShapeSelected">
+            <summary>
+              Looks up a localized string similar to More than one shape selected..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_NumberOfLayers">
+            <summary>
+              Looks up a localized string similar to {0} layers.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Paste0Shapes">
+            <summary>
+              Looks up a localized string similar to Paste {0} shapes..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_PasteShape0">
+            <summary>
+              Looks up a localized string similar to Paste {0} shape..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Permission0IsNotGranted">
+            <summary>
+              Looks up a localized string similar to Permission &apos;{0}&apos; is not granted..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Remove0ShapesFromAllLayers">
+            <summary>
+              Looks up a localized string similar to Remove {0} shapes from all layers..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_RemoveShape0FromAllLayers">
+            <summary>
+              Looks up a localized string similar to Remove {0} shape from all layers..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_SelectAllShapesOfTheDiagramBasedOnTemplate0">
+            <summary>
+              Looks up a localized string similar to Select all shapes of the diagram based on template &apos;{0}&apos;..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_SelectAllShapesOfType0InTheDiagram">
+            <summary>
+              Looks up a localized string similar to Select all shapes of type &apos;{0}&apos; in the diagram..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Send0ShapesToBackground">
+            <summary>
+              Looks up a localized string similar to Send {0} shapes to background..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Send0ToBackground">
+            <summary>
+              Looks up a localized string similar to Send {0} shape to background..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_ShapesNotAssignedToLayers">
+            <summary>
+              Looks up a localized string similar to Shapes not assigned to layers..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_ShowInformationFor01">
+            <summary>
+              Looks up a localized string similar to Show information for {0} &apos;{1}&apos; .
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_ShowPropertiesOf0Shapes">
+            <summary>
+              Looks up a localized string similar to Show properties of {0} shapes..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_ShowPropertiesOfDiagram0">
+            <summary>
+              Looks up a localized string similar to Show properties of diagram &apos;{0}&apos;..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_ShowPropertiesOfShape0">
+            <summary>
+              Looks up a localized string similar to Show properties of {0} shape..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipFmt_Ungroup0Shapes">
+            <summary>
+              Looks up a localized string similar to Ungroup {0} shapes..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_AllShapesOfTheDiagramAreSelected">
+            <summary>
+              Looks up a localized string similar to All shapes of the diagram are selected..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_CopyDiagramAsPNGAndEMFImageToClipboard">
+            <summary>
+              Looks up a localized string similar to Copy diagram as PNG and EMF image to clipboard..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_CopySelectionAsPNGAndEMFImageToClipboard">
+            <summary>
+              Looks up a localized string similar to Copy selected shapes as PNG and EMF image to clipboard..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_DisaggregateTheSelectedShapeAggregation">
+            <summary>
+              Looks up a localized string similar to Disaggregate the selected shape aggregation..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_GroupSelect">
+            <summary>
+              Looks up a localized string similar to Select or unselect shapes..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_LinearShapesMayNotBeTheBaseForACompositeShape">
+            <summary>
+              Looks up a localized string similar to Linear shapes may not be the base for a composite shape..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_NoGroupSelected">
+            <summary>
+              Looks up a localized string similar to No group selected..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_NoLayersActive">
+            <summary>
+              Looks up a localized string similar to No layers active..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_NoRedoCommandsLeft">
+            <summary>
+              Looks up a localized string similar to No redo commands left..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_NoShapesCutCopiedYet">
+            <summary>
+              Looks up a localized string similar to No shapes cut/copied yet..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_NoShapesSelected">
+            <summary>
+              Looks up a localized string similar to No shapes selected..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_NoShapeUnderTheMouseCursor">
+            <summary>
+              Looks up a localized string similar to No shape under the mouse cursor..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_NotEnoughShapesSelected">
+            <summary>
+              Looks up a localized string similar to Not enough shapes selected..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_NoUndoCommandsLeft">
+            <summary>
+              Looks up a localized string similar to No undo commands left..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_PropertiesAreNotAvailable">
+            <summary>
+              Looks up a localized string similar to Properties are not available..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_SelectAllShapesOfTheDiagram">
+            <summary>
+              Looks up a localized string similar to Select all shapes of the diagram..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_SelectedShapeIsNotACompositeShape">
+            <summary>
+              Looks up a localized string similar to Selected shape is not a composite shape..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_ThereAreShapesAssignedToTheModelObjects">
+            <summary>
+              Looks up a localized string similar to There are shapes assigned to the model(s)..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_TheSelectedGroupIsMemberOfAnotherGroup">
+            <summary>
+              Looks up a localized string similar to The selected group is member of another group..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_TheShapeUnderTheCursorIsNotBasedOnAnyTemplate">
+            <summary>
+              Looks up a localized string similar to The shape under the cursor is not based on any template..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_TooManyShapesSelected">
+            <summary>
+              Looks up a localized string similar to Too many shapes selected..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_UnselectAllSelectedShapes">
+            <summary>
+              Looks up a localized string similar to Unselect all selected shapes..
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.TooltipTxt_WithModelsPostfix">
+            <summary>
+              Looks up a localized string similar to with Models.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.Unchecked">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.UndoBtn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.UngroupBtn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.Properties.Resources.Visible">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.FontFamilyListBox">
+            <summary>
+            List box for displaying available font families including preview.
+            </summary>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.FontFamilyListBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.FontFamilyListBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.FontFamilyListBox.#ctor(System.Windows.Forms.Design.IWindowsFormsEditorService)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.FontFamilyListBox" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.FontFamilyListBox.#ctor(System.Windows.Forms.Design.IWindowsFormsEditorService,System.ComponentModel.IContainer)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.FontFamilyListBox" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.FontFamilyListBox.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.FontFamilyListBox.OnKeyUp(System.Windows.Forms.KeyEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.FontFamilyListBox.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.FontFamilyListBox.OnMeasureItem(System.Windows.Forms.MeasureItemEventArgs)">
+            <override></override>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.FontFamilyListBox.OnDrawItem(System.Windows.Forms.DrawItemEventArgs)">
+            <override></override>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.FontFamilyListBox.ProductVersion">
+            <summary>
+            Specifies the version of the assembly containing the component.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.FontFamilyListBox.HighlightItems">
+            <summary>
+            Specifies if 
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.FontFamilyListBox.ItemBackgroundColor">
+            <summary>
+            Specifies the background color for normal items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.FontFamilyListBox.ItemHighlightedColor">
+            <summary>
+            Specifies the background color for highlighted items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.FontFamilyListBox.ItemSelectedColor">
+            <summary>
+            Specifies the background color for selected items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.FontFamilyListBox.ItemFocusedColor">
+            <summary>
+            Specifies the background color of focused items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.FontFamilyListBox.FocusBorderColor">
+            <summary>
+            Specifies the border color for focused items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.FontFamilyListBox.ItemBorderColor">
+            <summary>
+            Spacifies the border color for normal items.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.FontFamilyListBox.TextColor">
+            <summary>
+            Specifies the text color of all items.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.DisplayDesigner">
+            <summary>
+            A designer for the Display component for WinForms designer.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DisplayDesigner.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.DisplayDesigner" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.DisplayDesigner.OnPaintAdornments(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Paints designtime adornments (dashed frame around the control)
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.ExportDiagramDialog">
+            <summary>
+            Dialog for exporting a diagram to a graphics file.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ExportDiagramDialog.#ctor(Dataweb.NShape.Controllers.IDiagramPresenter)">
+            <summary>
+            Initializes a new Instance of <see cref="T:Dataweb.NShape.WinFormsUI.ExportDiagramDialog" />.
+            </summary>
+        </member>
+        <member name="F:Dataweb.NShape.WinFormsUI.ExportDiagramDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ExportDiagramDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ExportDiagramDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+            <summary>
+            Connects a Windows.Forms.TreeView control to a model controller.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter" />.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.SelectModelObject(Dataweb.NShape.Advanced.IModelObject,System.Boolean)">
+            <summary>
+            Selects the given model object.
+            </summary>
+            <param name="modelObject">Model object to be selected.</param>
+            <param name="addToSelection">Specifies if the model object should be added to the current selection or should replace it.</param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.UnselectModelObject(Dataweb.NShape.Advanced.IModelObject)">
+            <summary>
+            Removes the given model object from the current selection.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.UnselectAllModelObjects">
+            <summary>
+            Clears all selected model objects.
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.FindShapes(System.Collections.Generic.IEnumerable{Dataweb.NShape.Advanced.IModelObject})">
+            <summary>
+            Find all loaded shapes in all loaded diagrams assigned to any of the given model objects.
+            </summary>
+            <param name="modelObjects"></param>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.GetMenuItemDefs">
+            <summary>
+            Returns a collection of <see cref="T:Dataweb.NShape.Advanced.MenuItemDef" /> for constructing context menus etc.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="E:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.SelectionChanged">
+            <summary>
+            Raised when the current selection has changed.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.ProductVersion">
+            <summary>
+            Specifies the version of the assembly containing the component.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.ModelTreeController">
+            <summary>
+            Specifies the model controller for this presenter.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.PropertyController">
+            <summary>
+            Specifies a property controller for editing properties of the selected model object (optional).
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.TreeView">
+            <summary>
+            Specifies a TreeView used as user interface for this presenter.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.SelectedModelObjects">
+            <summary>
+            Gets a readonly collection of selected model objects.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.HideDeniedMenuItems">
+            <summary>
+            Specifies if MenuItemDefs that are not granted should appear as MenuItems in the dynamic context menu.
+            </summary>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ModelTreeViewPresenter.ShowDefaultContextMenu">
+            <summary>
+            Specifies whether the default context menu (created dynamically from MenuItemDefs)  or a user defined context menu is displayed.
+            </summary>
+        </member>
+        <member name="T:Dataweb.NShape.WinFormsUI.ModelObjectDragInfo">
+            <summary>
+            Drag'n'Drop info for dragging model objects out of the model tree presenter
+            </summary>
+        </member>
+        <member name="M:Dataweb.NShape.WinFormsUI.ModelObjectDragInfo.#ctor(Dataweb.NShape.Advanced.IModelObject)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dataweb.NShape.WinFormsUI.ModelObjectDragInfo" />.
+            </summary>
+            <param name="modelObject"></param>
+        </member>
+        <member name="P:Dataweb.NShape.WinFormsUI.ModelObjectDragInfo.ModelObject">
+            <summary>
+            Specifies the dragged model object.
+            </summary>
+        </member>
+    </members>
+</doc>

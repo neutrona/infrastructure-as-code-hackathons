@@ -1,0 +1,228 @@
+---
+
+    - name: Create a configuration directory for Etcd
+      when: master is defined
+      shell: "sudo mkdir /etc/etcd /var/lib/etcd"
+      ignore_errors: yes
+
+    - name: Move certs to the config directory
+      when: master is defined
+      shell: "sudo mv ~/ca.pem ~/kubernetes.pem ~/kubernetes-key.pem /etc/etcd"
+
+    - name: Etcd binaries
+      when: master is defined
+      shell: |
+          wget https://github.com/coreos/etcd/releases/download/v3.3.9/etcd-v3.3.9-linux-amd64.tar.gz &&
+          tar xvzf etcd-v3.3.9-linux-amd64.tar.gz &&
+          sudo mv etcd-v3.3.9-linux-amd64/etcd* /usr/local/bin/ &&
+          sudo rm etcd-v3.3.9-linux-amd64.tar.gz
+
+    - name: Create an etcd systemd unit file on master-01
+      when: master is defined and master == 'master01'
+      become: yes
+      copy:
+        dest: /etc/systemd/system/etcd.service
+        content: |
+          [Unit]
+          Description=etcd
+          Documentation=https://github.com/coreos
+          
+          
+          [Service]
+          ExecStart=/usr/local/bin/etcd \
+            --name {{master_01}} \
+            --cert-file=/etc/etcd/kubernetes.pem \
+            --key-file=/etc/etcd/kubernetes-key.pem \
+            --peer-cert-file=/etc/etcd/kubernetes.pem \
+            --peer-key-file=/etc/etcd/kubernetes-key.pem \
+            --trusted-ca-file=/etc/etcd/ca.pem \
+            --peer-trusted-ca-file=/etc/etcd/ca.pem \
+            --peer-client-cert-auth \
+            --client-cert-auth \
+            --initial-advertise-peer-urls https://{{master_01}}:2380 \
+            --listen-peer-urls https://{{master_01}}:2380 \
+            --listen-client-urls https://{{master_01}}:2379,http://127.0.0.1:2379 \
+            --advertise-client-urls https://{{master_01}}:2379 \
+            --initial-cluster-token etcd-cluster-0 \
+            --initial-cluster {{master_01}}=https://{{master_01}}:2380,{{master_02}}=https://{{master_02}}:2380,{{master_03}}=https://{{master_03}}:2380 \
+            --initial-cluster-state new \
+            --data-dir=/var/lib/etcd
+          Restart=on-failure
+          RestartSec=5
+          
+          
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Create an etcd systemd unit file on master-02
+      when: master is defined and master == 'master02'
+      become: yes
+      copy:
+        dest: /etc/systemd/system/etcd.service
+        content: |
+          [Unit]
+          Description=etcd
+          Documentation=https://github.com/coreos
+          
+          
+          [Service]
+          ExecStart=/usr/local/bin/etcd \
+            --name {{master_02}} \
+            --cert-file=/etc/etcd/kubernetes.pem \
+            --key-file=/etc/etcd/kubernetes-key.pem \
+            --peer-cert-file=/etc/etcd/kubernetes.pem \
+            --peer-key-file=/etc/etcd/kubernetes-key.pem \
+            --trusted-ca-file=/etc/etcd/ca.pem \
+            --peer-trusted-ca-file=/etc/etcd/ca.pem \
+            --peer-client-cert-auth \
+            --client-cert-auth \
+            --initial-advertise-peer-urls https://{{master_02}}:2380 \
+            --listen-peer-urls https://{{master_02}}:2380 \
+            --listen-client-urls https://{{master_02}}:2379,http://127.0.0.1:2379 \
+            --advertise-client-urls https://{{master_02}}:2379 \
+            --initial-cluster-token etcd-cluster-0 \
+            --initial-cluster {{master_01}}=https://{{master_01}}:2380,{{master_02}}=https://{{master_02}}:2380,{{master_03}}=https://{{master_03}}:2380 \
+            --initial-cluster-state new \
+            --data-dir=/var/lib/etcd
+          Restart=on-failure
+          RestartSec=5
+          
+          
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Create an etcd systemd unit file on master-03
+      when: master is defined and master == 'master03'
+      become: yes
+      copy:
+        dest: /etc/systemd/system/etcd.service
+        content: |
+          [Unit]
+          Description=etcd
+          Documentation=https://github.com/coreos
+          
+          
+          [Service]
+          ExecStart=/usr/local/bin/etcd \
+            --name {{master_03}} \
+            --cert-file=/etc/etcd/kubernetes.pem \
+            --key-file=/etc/etcd/kubernetes-key.pem \
+            --peer-cert-file=/etc/etcd/kubernetes.pem \
+            --peer-key-file=/etc/etcd/kubernetes-key.pem \
+            --trusted-ca-file=/etc/etcd/ca.pem \
+            --peer-trusted-ca-file=/etc/etcd/ca.pem \
+            --peer-client-cert-auth \
+            --client-cert-auth \
+            --initial-advertise-peer-urls https://{{master_03}}:2380 \
+            --listen-peer-urls https://{{master_03}}:2380 \
+            --listen-client-urls https://{{master_03}}:2379,http://127.0.0.1:2379 \
+            --advertise-client-urls https://{{master_03}}:2379 \
+            --initial-cluster-token etcd-cluster-0 \
+            --initial-cluster {{master_01}}=https://{{master_01}}:2380,{{master_02}}=https://{{master_02}}:2380,{{master_03}}=https://{{master_03}}:2380 \
+            --initial-cluster-state new \
+            --data-dir=/var/lib/etcd
+          Restart=on-failure
+          RestartSec=5
+          
+          
+          [Install]
+          WantedBy=multi-user.target                    
+
+    - name: Reload daemon configuration, enable etcd to start at boot time and start etcd
+      when: master is defined
+      shell: |
+          sudo systemctl daemon-reload &&
+          sudo systemctl enable etcd &&
+          sudo systemctl start etcd
+
+    - name: verify etcd cluster
+      when: master is defined
+      shell: "ETCDCTL_API=3 etcdctl member list"
+      register: etcd_output
+      ignore_errors: yes
+
+    - name: Printing etcd cluster status
+      when: master is defined
+      debug:
+        msg: "{{etcd_output.stdout}}"
+      ignore_errors: yes
+
+    - name: Create the config file for kubeadm
+      when: master is defined
+      copy:
+        dest: config.yaml
+        content: |
+          apiVersion: kubeadm.k8s.io/v1alpha3
+          kind: ClusterConfiguration
+          kubernetesVersion: stable
+          apiServerCertSANs:
+          - {{haproxy_vip}}
+          controlPlaneEndpoint: "{{haproxy_vip}}:6443"
+          etcd:
+            external:
+              endpoints:
+              - https://{{master_01}}:2379
+              - https://{{master_02}}:2379
+              - https://{{master_03}}:2379
+              caFile: /etc/etcd/ca.pem
+              certFile: /etc/etcd/kubernetes.pem
+              keyFile: /etc/etcd/kubernetes-key.pem
+          networking:
+            podSubnet: 10.244.0.0/16
+          apiServerExtraArgs:
+            apiserver-count: "3"
+
+    - name: Initialize machine as master node (ONLY ON MASTER-01)
+      when: master is defined and master == 'master01'
+      shell: "sudo kubeadm init --config=config.yaml"
+      register: init_output
+
+    - name: run nginx container
+      when: master is defined and master == 'master01'
+      become: yes
+      shell: "docker run -d --name nginx -p 65000:80 nginx"
+
+    - name: compress pki
+      when: master is defined and master == 'master01'
+      become: yes
+      shell: "tar -czvf /home/{{ssh_user}}/pki.tar.gz /etc/kubernetes/pki"
+
+    - name: cp pki.tar.gz to nginx container
+      when: master is defined and master == 'master01'
+      become: yes
+      shell: |
+          docker cp /home/{{ssh_user}}/pki.tar.gz nginx:/usr/share/nginx/html/ &&
+          rm /home/{{ssh_user}}/pki.tar.gz
+
+    - name: Downloading pki
+      when: master is defined and master != 'master01'
+      shell: "curl -O {{master_01}}:65000/pki.tar.gz"
+
+    - name: decompress pki
+      when: master is defined and master != 'master01'
+      shell: |
+          tar -xzvf pki.tar.gz &&
+          rm pki.tar.gz &&
+          mv etc/kubernetes/pki pki
+
+    - name: remove nginx container
+      when: master is defined and master == 'master01'
+      become: yes
+      shell: "docker rm nginx --force"
+
+    - name: Remove apiserver.crt and apiserver.key
+      when: master is defined and master != 'master01'
+      shell: "rm pki/apiserver.*"
+
+    - name: Move the certificates to the /etc/kubernetes directory
+      when: master is defined and master != 'master01'
+      shell: "sudo mv pki /etc/kubernetes/"
+
+    - name: Initialize machine as master node (ON MASTER-02 and MASTER-03)
+      when: master is defined and master != 'master01'
+      shell: "sudo kubeadm init --config=config.yaml"
+
+    - name: Printing master init output
+      when: master is defined and master == 'master01'
+      debug:
+        msg: "{{init_output.stdout}}"

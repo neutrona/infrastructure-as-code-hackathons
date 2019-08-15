@@ -1,0 +1,3 @@
+requests
+pika==0.13.1
+prometheus_client

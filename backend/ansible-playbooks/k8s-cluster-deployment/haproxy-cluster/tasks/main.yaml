@@ -1,0 +1,214 @@
+---
+
+    - name: apt update && apt upgrade
+      become: yes
+      when: haproxy is defined
+      apt:
+        update_cache: yes
+        upgrade: yes
+
+    - name: add haproxy repository
+      become: yes
+      when: haproxy is defined
+      shell: add-apt-repository ppa:vbernat/haproxy-1.7
+
+    - name: add nonlocal bind and restar sysctl
+      become: yes
+      when: haproxy is defined
+      shell: "echo 'net.ipv4.ip_nonlocal_bind=1' >> /etc/sysctl.conf && sysctl -p"
+
+    - name: Install packages
+      when: haproxy is defined
+      become: yes
+      apt:
+        name: "{{ packages }}"
+        update_cache: yes
+      vars:
+        packages:
+        - haproxy
+        - openjdk-8-jdk
+        - mininet
+        - wget
+        - curl
+        - keepalived
+
+    - name: add keepalived config
+      become: yes
+      when: haproxy is defined
+      shell: |
+          cat > /etc/keepalived/keepalived.conf << EOF
+
+          vrrp_instance VI_1 {
+              state MASTER
+              interface {{haproxy_nic}}
+              virtual_router_id 51
+              advert_int 1
+              authentication {
+                  auth_type PASS
+                  auth_pass {{haproxy_password}}
+              }
+              virtual_ipaddress {
+                  {{haproxy_vip}}
+              }
+          }
+
+
+    - name: start keepalived
+      become: yes
+      when: haproxy is defined
+      shell: "service keepalived start && update-rc.d keepalived defaults"
+
+    - name: Copy cfssl
+      when: haproxy is defined
+      copy: 
+        src: ../../files/{{item}}
+        dest: /tmp/
+      with_items: 
+        - cfssljson_linux-amd64
+        - cfssl_linux-amd64
+
+    - name: Install cfssl
+      when: haproxy is defined
+      shell: |
+          chmod +x /tmp/cfssl* &&
+          sudo mv /tmp/cfssl_linux-amd64 /usr/local/bin/cfssl &&
+          sudo mv /tmp/cfssljson_linux-amd64 /usr/local/bin/cfssljson
+
+    - name: add haproxy configuration
+      become: yes
+      when: haproxy is defined
+      shell: |
+          cat >> /etc/haproxy/haproxy.cfg << EOF
+
+          frontend kubernetes
+              bind {{ haproxy_vip }}:6443
+              option tcplog
+              mode tcp
+              default_backend kubernetes-master-nodes
+          
+
+          backend kubernetes-master-nodes
+              mode tcp
+              balance roundrobin
+              option tcp-check
+              server k8s-master-01 {{ master_01 }}:6443 check fall 3 rise 2
+              server k8s-master-02 {{ master_02 }}:6443 check fall 3 rise 2
+              server k8s-master-03 {{ master_03 }}:6443 check fall 3 rise 2
+              
+
+    - name: Restart haproxy
+      become: yes
+      when: haproxy is defined
+      shell: "systemctl restart haproxy"
+
+    - name: Create cert authority config file
+      when: haproxy is defined and haproxy == 'haproxy01'
+      shell: |
+          cat > ca-config.json << EOF
+          {
+            "signing": {
+              "default": {
+                "expiry": "8760h"
+              },
+              "profiles": {
+                "kubernetes": {
+                  "usages": ["signing", "key encipherment", "server auth", "client auth"],
+                  "expiry": "8760h"
+                }
+              }
+            }
+          }
+          
+    - name: Create cert authority signing request config file
+      when: haproxy is defined and haproxy == 'haproxy01'
+      shell: |
+          cat > ca-csr.json << EOF
+          {
+             "CN":"Kubernetes",
+             "key":{
+                "algo":"rsa",
+                "size":2048
+             },
+             "names":[
+                {
+                   "C":"IE",
+                   "L":"Cork",
+                   "O":"Kubernetes",
+                   "OU":"CA",
+                   "ST":"Cork Co."
+                }
+             ]
+          }  
+
+    - name: Generate the certificate authority certificate and private key
+      when: haproxy is defined and haproxy == 'haproxy01'
+      shell: "cfssl gencert -initca ca-csr.json | cfssljson -bare ca"  
+
+    - name: Create cert siging request config file
+      when: haproxy is defined and haproxy == 'haproxy01'
+      shell: |
+          cat > kubernetes-csr.json << EOF
+          {
+            "CN": "kubernetes",
+            "key": {
+              "algo": "rsa",
+              "size": 2048
+            },
+            "names": [
+            {
+              "C": "IE",
+              "L": "Cork",
+              "O": "Kubernetes",
+              "OU": "Kubernetes",
+              "ST": "Cork Co."
+            }
+           ]
+          }          
+
+    - name: Generate the certificate and private key
+      when: haproxy is defined and haproxy == 'haproxy01'
+      shell:  |
+          cfssl gencert \
+          -ca=ca.pem \
+          -ca-key=ca-key.pem \
+          -config=ca-config.json \
+          -hostname={{master_01}},{{master_02}},{{master_03}},{{haproxy_vip}},127.0.0.1,kubernetes.default \
+          -profile=kubernetes kubernetes-csr.json | \
+          cfssljson -bare kubernetes
+
+    - name: run nginx container
+      when: haproxy is defined and haproxy == 'haproxy01'
+      become: yes
+      shell: "docker run -d --name nginx -p 65000:80 nginx"
+
+    - name: Setting full permissions to kubernetes-key.pem
+      when: haproxy is defined and haproxy == 'haproxy01'
+      become: yes
+      shell: "chmod 777 /home/{{ssh_user}}/kubernetes-key.pem"
+
+    - name: cp files to nginx container
+      when: haproxy is defined and haproxy == 'haproxy01'
+      become: yes
+      shell: "docker cp /home/{{ssh_user}}/{{item}} nginx:/usr/share/nginx/html/"
+      with_items:
+        - ca.pem
+        - kubernetes.pem
+        - kubernetes-key.pem
+
+    - name: Downloading certificates
+      when: odl is not defined
+      shell: "curl -O {{haproxy_01}}:65000/{{item}}"
+      with_items:
+        - ca.pem
+        - kubernetes.pem
+        - kubernetes-key.pem
+
+    - name: Changing kubernetes-key.pem permissions
+      when: odl is not defined
+      become: yes
+      shell: "chmod 0600 /home/{{ssh_user}}/kubernetes-key.pem"
+
+    - name: remove nginx container
+      when: haproxy is defined and haproxy == 'haproxy01'
+      become: yes
+      shell: "docker rm nginx --force"

@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # Expose the port on each node
+  name: shift-yggdrasil2-scheduler-ext
+  labels:
+    app: shift-yggdrasil2-scheduler
+  namespace: {{namespace}}
+spec:
+  ports:
+  - name: api
+    port: 8375
+    protocol: TCP
+    targetPort: 8375
+    nodePort: {{yggdrasil2_api_ext_port}}
+  selector:
+    app: shift-yggdrasil2-scheduler
+  type: NodePort # Or LoadBalancer in production w/ proper security
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: shift-yggdrasil2-scheduler
+  namespace: {{namespace}}
+spec:
+  serviceName: "shift-yggdrasil2-scheduler"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: shift-yggdrasil2-scheduler
+        version: v1
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role
+                operator: In
+                values: 
+                - worker
+      containers:
+      - name: shift-yggdrasil2-scheduler
+        image: davidneutrona/shift-yggdrasil2-scheduler
+        env:
+        - name: rmq_hostname
+          value: {{rmq_host}}
+        - name: rmq_username
+          value: {{rmq_username}}
+        - name: rmq_password
+          value: {{rmq_password}}
+        - name: rmq_port
+          value: "{{rmq_port}}"
+        - name: neo4j_hostname
+          value: {{internal_neo4j_host}}
+        - name: neo4j_bolt_port
+          value: "{{internal_neo4j_bolt_port}}" 
+        - name: neo4j_username
+          value: {{neo4j_username}}
+        - name: neo4j_password
+          value: {{neo4j_password}}
+        - name: shift_repository_url
+          value: {{intent_repository_url}}
+        - name: odl_vip
+          value: {{odl_vip}}
+        - name: odl_user
+          value: {{odl_user}}
+        - name: odl_password
+          value: {{odl_password}}
+        - name: tower_uri
+          value: {{ansible_tower_uri}}
+        - name: tower_user
+          value: {{ansible_tower_user}}
+        - name: tower_password
+          value: {{ansible_tower_password}}
+        ports:
+        - name: api
+          containerPort: 8375

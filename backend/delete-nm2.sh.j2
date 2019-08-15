@@ -1,0 +1,11 @@
+#!/bin/bash
+
+kubectl delete -f /opt/{{namespace}}/yggdrasil/
+kubectl delete -f /opt/{{namespace}}/backend/pcc
+kubectl delete -f /opt/{{namespace}}/backend/rpm
+kubectl delete -f /opt/{{namespace}}/backend/workers
+kubectl delete -f /opt/{{namespace}}/backend/exabgp
+kubectl delete -f /opt/{{namespace}}/monitoring/prometheus.yaml
+kubectl delete -f /opt/{{namespace}}/backend/neo4j
+kubectl delete -f /opt/{{namespace}}/backend/rabbitmq
+kubectl delete -f /opt/{{namespace}}/backend/base

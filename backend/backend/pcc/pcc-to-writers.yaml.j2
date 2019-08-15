@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # The required headless service for StatefulSets
+  name: pcc-to-writers
+  labels:
+    app: pcc-to-writers
+  namespace: {{namespace}}
+spec:
+  ports:
+  - port: 60000
+    name: prom-port
+  clusterIP: None
+  selector:
+    app: pcc-to-writers
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: pcc-to-writers
+  namespace: {{namespace}}
+spec:
+  serviceName: "pcc-to-writers"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pcc-to-writers
+        version: v1
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role
+                operator: In
+                values: 
+                - worker
+      containers:
+      - name: pcc-to-writers
+        image: rodalvarez/pcc-to-writers
+        env:
+        - name: RMQ_COLLECTOR_USERNAME
+          value: {{rmq_username}}
+        - name: RMQ_COLLECTOR_PASSWORD
+          value: {{rmq_password}}
+        - name: RMQ_COLLECTOR_HOST
+          value: {{rmq_host}}
+        - name: RMQ_PUBLISHER_USERNAME
+          value: {{rmq_username}}
+        - name: RMQ_PUBLISHER_PASSWORD
+          value: {{rmq_password}}
+        - name: RMQ_PUBLISHER_HOST
+          value: {{rmq_host}}
+        ports:
+        - containerPort: 60000
+          name: prom-port

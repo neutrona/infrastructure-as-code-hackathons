@@ -1,0 +1,25 @@
+---
+
+    - name: Add docker repository key
+      when: odl is not defined
+      become: yes
+      shell: "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -"
+
+    - name: Add docker repository
+      when: odl is not defined
+      become: yes
+      shell: "add-apt-repository \"deb https://download.docker.com/linux/$(. /etc/os-release; echo \"$ID\") $(lsb_release -cs) stable\""
+
+    - name: Install docker
+      when: odl is not defined
+      become: yes
+      shell: "apt update && apt-get install -y docker-ce=$(apt-cache madison docker-ce | grep 17.03 | head -1 | awk '{print $3}')"
+      ignore_errors: yes
+
+    - name: Allowing insecure connections to docker registry
+      when: haproxy is not defined and odl is not defined
+      become: yes
+      shell: |
+          echo '{"insecure-registries" : [ "gitlab:4567" ], "log-driver": "json-file", "log-opts": {"max-size": "10m","max-file": "10" }}' >> /etc/docker/daemon.json &&
+          systemctl daemon-reload &&
+          systemctl restart docker

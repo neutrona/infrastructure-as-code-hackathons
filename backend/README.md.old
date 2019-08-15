@@ -1,0 +1,32 @@
+![Alt text](NM2 diagram.jpg?raw=true "NM2 diagram")
+
+###### SDN platform to be built on a kubernetes cluster
+
+### Cluster requirements
+|Purpose     | Count | Memory | vCPU|
+|:----------:|:-----:|:------:|:---:|
+|ODL         |   3   |   8    |  4  |
+|k8s masters |   3   |   4    |  2  |
+|HAProxy     |   3*  |   2    |  2  |
+|High perf   |   4   |   32   |  8  |
+|Medium perf |   4   |   16   |  4  |
+\* It is possible to deploy the platform using only 1 HAProxy instead of a cluster
+
+### Deployment
+1) Create ssh key pair
+1) Create corresponding VMs. In case they are created in a cloud platform, make sure you add the ssh public key during creation 
+2) Make sure python is installed on every VM
+3) Modify vars.yaml file accordingly
+4) If not already done so, copy ssh public key to all the VMs
+5) Build the kubernetes cluster
+```
+cd ansible-playbooks
+ansible-playbook -i inventory -e sshkey=SSHKEY_PATH k8s-cluster-deployment/main.yaml 
+```
+6) Before deploying nm2 services, edit monitoring/manifest-all.yaml (line 3136) by setting the haproxy vIP address accordingly
+7) If there's an instance of rook already running, comment role rook within nm2-deployment/main.yaml
+8) Deploy NM2
+```
+cd ansible-playbooks
+ansible-playbook -i inventory -e sshkey=SSHKEY_PATH nm2-deployment/main.yaml 
+```

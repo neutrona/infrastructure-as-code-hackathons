@@ -1,0 +1,106 @@
+---
+
+namespace: nm2
+ssh_user: ubuntu
+ssh_sudo_password: ubuntu
+sshkey: '{{sshkey}}' # must be passed when executing the playbook as => -e sshkey=PATH_TO_SSH_KEY
+haproxy_01: "10.255.32.201"
+haproxy_02: "10.255.32.202"
+haproxy_03: "10.255.32.203"
+haproxy_net: "10.255.32.0"
+haproxy_vip: "10.255.32.200" # when there's only 1 HAProxy instance, this should be its IP address, otherwise, a virtual IP
+master_01: "10.255.32.204"
+master_02: "10.255.32.205"
+master_03: "10.255.32.206"
+node_01: "10.255.32.207"
+node_01_hostname: k8s-node-01
+node_02: "10.255.32.208"
+node_02_hostname: k8s-node-02
+node_03: "10.255.32.209"
+node_03_hostname: k8s-node-03
+node_04: "10.255.32.210"
+node_04_hostname: k8s-node-04
+node_05: "10.255.32.211"
+node_05_hostname: k8s-node-05
+node_06: "10.255.32.212"
+node_06_hostname: k8s-node-06
+node_07: "10.255.32.213"
+node_07_hostname: k8s-node-07
+node_08: "10.255.32.214"
+node_08_hostname: k8s-node-08
+odl_01: "10.255.32.215"
+odl_02: "10.255.32.216"
+odl_03: "10.255.32.217"
+odl_vip: "10.255.32.218"
+odl_keepalived_password: password
+odl_interface: ens3
+odl_user: admin
+odl_password: admin
+haproxy_password: password
+haproxy_nic: "ens3" # must be the same on all servers (for HAProxy only)
+
+nm2_haproxy_vip: "10.10.200.200" # when there's only 1 HAProxy instance, this should be its IP address, otherwise, a virtual IP
+nm2_haproxy_nic: "ens9" # must be the same on all servers (for HAProxy only)
+
+member_odl_01: "member-1"
+member_odl_02: "member-2"
+member_odl_03: "member-3"
+rook_storage_replicas: 3
+region1: nycone # must be alphabetical
+region2: nyctwo # must be alphabetical
+neo4j_host: 
+neo4j_username: neo4j
+neo4j_password: neo4j
+rmq_host: rabbitmq
+rmq_port: 5672
+rmq_erlang_cookie: cookie
+rmq_username: admin
+rmq_password: password
+inventory_api_username: shift
+inventory_api_password: password
+pcep_binding_address: "0.0.0.0"
+bgp_peer_1: "10.255.42.45"
+bgp_local_as_1: 55259
+bgp_peer_2: "10.255.42.45"
+bgp_local_as_2: 55259
+bgp_peer_as: 55259
+netconf_broker_api_host: shift-netconf-broker
+shift_netconf_broker_port: 8646
+netconf_broker_api_username: shift_ro
+netconf_broker_api_password: password
+webhook_url: https://hooks.slack.com/services/XXXX/XXXX/XXXX # In case there won't be any webhook, value should be set to ''
+slack_channel_name: networkmodel2dot0 # In case there won't be any webhook, value should be set to ''
+
+shift_intent_routing_key: shift_intent_routing_key
+internal_neo4j_host: load-balancer
+internal_neo4j_bolt_port: 7687
+intent_repository_url: https://gitlab/shift-policy-code.git
+ansible_tower_uri: https://ansible-tower/api/v2/
+ansible_tower_user: admin
+ansible_tower_password: password
+
+# Ports exposed on haproxy (where queries and sessions should be directed to)
+haproxy_pcep_port: 4189
+haproxy_prometheus_port: 9090
+haproxy_grafana_port: 3000
+haproxy_neo4j_http_port: 7474
+haproxy_neo4j_bolt_port: 7687
+haproxy_rabbitmq_http_port: 15672
+haproxy_rabbitmq_amqp_port: 5672
+haproxy_inventory_api_port: 5002
+haproxy_yggdrasil2_api_port: 8375
+
+# Ports exposed on master nodes (within range allowed by k8s to expose (30000-32767))
+pcep_ext_port: 30189
+prometheus_ext_port: 30090
+grafana_ext_port: 30000 # if modified, please do so in at monitoring/manifest-all.yaml line 3280
+neo4j_http_ext_port: 31000
+neo4j_bolt_ext_port: 31100
+neo4j_region1_bolt_ext_port: 30687
+neo4j_region1_http_ext_port: 30742
+neo4j_region2_bolt_ext_port: 31687
+neo4j_region2_http_ext_port: 31742
+rabbitmq_http_ext_port: 30672
+rabbitmq_amqp_ext_port: 31672
+inventory_api_ext_port: 31500
+yggdrasil2_api_ext_port: 31375

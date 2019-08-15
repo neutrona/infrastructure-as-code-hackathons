@@ -1,0 +1,42 @@
+---
+
+    - name: add haproxy configuration
+      become: yes
+      when: haproxy is defined
+      shell: |
+          cat >> /etc/haproxy/haproxy.cfg << EOF
+
+          frontend {{namespace}}-neo4j-http
+              bind {{ haproxy_vip }}:{{haproxy_neo4j_http_port}}
+              option tcplog
+              mode tcp
+              default_backend {{namespace}}-neo4j-http-backend
+          
+
+          backend {{namespace}}-neo4j-http-backend
+              mode tcp
+              balance roundrobin
+              option tcp-check
+              server master-01 {{ master_01 }}:{{neo4j_http_ext_port}} check fall 3 rise 2
+              server master-02 {{ master_02 }}:{{neo4j_http_ext_port}} check fall 3 rise 2
+              server master-03 {{ master_03 }}:{{neo4j_http_ext_port}} check fall 3 rise 2 
+
+
+          frontend {{namespace}}-neo4j-bolt
+              bind {{ haproxy_vip }}:{{haproxy_neo4j_bolt_port}}
+              option tcplog
+              mode tcp
+              default_backend {{namespace}}-neo4j-bolt-backend
+          
+          backend {{namespace}}-neo4j-bolt-backend
+              mode tcp
+              balance roundrobin
+              option tcp-check
+              server master-01 {{ master_01 }}:{{neo4j_bolt_ext_port}} check fall 3 rise 2
+              server master-02 {{ master_02 }}:{{neo4j_bolt_ext_port}} check fall 3 rise 2
+              server master-03 {{ master_03 }}:{{neo4j_bolt_ext_port}} check fall 3 rise 2    
+
+    - name: Restart haproxy
+      become: yes
+      when: haproxy is defined
+      shell: "systemctl restart haproxy"

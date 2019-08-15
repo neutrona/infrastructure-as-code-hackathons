@@ -1,0 +1,43 @@
+---
+
+    - name: Get join command
+      when: master is defined and master == 'master01'
+      become: yes
+      shell: "kubeadm token create --ttl 0 --print-join-command"
+      register: token_output
+
+    - name: Making join script
+      when: master is defined and master == 'master01'
+      become: yes
+      shell: "echo {{token_output.stdout}} >> /tmp/join.sh"
+
+    - name: run nginx container
+      when: master is defined and master == 'master01'
+      become: yes
+      shell: "docker run -d --name nginx -p 65000:80 nginx"
+
+    - name: cp join.sh to nginx container
+      when: master is defined and master == 'master01'
+      become: yes
+      shell: |
+          docker cp /tmp/join.sh nginx:/usr/share/nginx/html/ &&
+          rm /tmp/join.sh
+
+    - name: Downloading join.sh
+      when: node is defined
+      shell: "curl -O {{master_01}}:65000/join.sh"
+
+    - name: remove nginx container
+      when: master is defined and master == 'master01'
+      become: yes
+      shell: "docker rm nginx --force"
+
+    - name: Joining nodes
+      when: node is defined
+      become: yes
+      shell: |
+          chmod +x /home/{{ssh_user}}/join.sh &&
+          /home/{{ssh_user}}/join.sh &&
+          rm /home/{{ssh_user}}/join.sh
+
+

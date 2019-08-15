@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # The required headless service for StatefulSets
+  name: pcc-collector-consumer
+  labels:
+    app: pcc-collector-consumer
+  namespace: {{namespace}}
+spec:
+  ports:
+  - port: 60000
+    name: prom-port
+  clusterIP: None
+  selector:
+    app: pcc-collector-consumer
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: pcc-collector-consumer
+  namespace: {{namespace}}
+spec:
+  serviceName: "pcc-collector-consumer"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pcc-collector-consumer
+        version: v1
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role
+                operator: In
+                values: 
+                - worker
+      containers:
+      - name: pcc-collector-consumer
+        image: rodalvarez/pcc-collector-consumer
+        env:
+        - name: RMQ_USERNAME
+          value: {{rmq_username}}
+        - name: RMQ_PASSWORD
+          value: {{rmq_password}}
+        - name: RMQ_HOST
+          value: {{rmq_host}}
+        - name: SHIFT_PCE_LISTENER_IP
+          value: "{{nm2_haproxy_vip}}"
+        ports:
+        - containerPort: 60000
+          name: prom-port

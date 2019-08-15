@@ -1,0 +1,93 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: odl1
+  namespace: nm2
+spec:
+  serviceName: odl1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: odl1
+        version: v1
+    spec:
+      containers:
+      - name: odl1
+        image: gitlab:4567/networkmodel2.0/opendaylight_poc/odl-ubuntu
+        ports:
+        - name: odlcluster
+          containerPort: 7800 
+        - name: odlcluster2
+          containerPort: 2550
+        - name: http
+          containerPort: 8080 
+        - name: restconf
+          containerPort: 8181
+        - name: p1
+          containerPort: 5666
+        - name: p2
+          containerPort: 12001
+        - name: pcep
+          containerPort: 4189
+        # - name: bgp
+        # containerPort: 179
+        # hostPort: 179
+        env:
+          - name: LOCAL_HOST
+            value: odl1
+          - name: REMOTE_HOST1
+            value: odl2
+          - name: REMOTE_HOST2
+            value: odl3
+          - name: MEMBER
+            value: member-1
+      imagePullSecrets:
+      - name: regcred
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: odl1
+  namespace: nm2
+spec:
+  ports:
+  - name: odlcluster
+    port: 7800 
+  - name: odlcluster2
+    port: 2550
+  - name: http
+    port: 8080 
+  - name: p1
+    port: 5666
+  - name: p2
+    port: 12001
+  clusterIP: None
+  selector:
+    app: odl1
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  # Expose the management HTTP port on each node
+  name: odl1-expose
+  labels:
+    app: odl1
+  namespace: nm2
+spec:
+  ports:
+  - name: restconf
+    port: 8181
+    protocol: TCP
+    targetPort: 8181
+    nodePort: 30081
+  - name: pcep
+    port: 4189
+    protocol: TCP
+    targetPort: 4189
+    nodePort: 30418  
+  selector:
+    app: odl1
+  type: NodePort # Or LoadBalancer in production w/ proper security

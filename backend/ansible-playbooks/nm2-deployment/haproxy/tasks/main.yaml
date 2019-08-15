@@ -1,0 +1,135 @@
+---
+
+    - name: add keepalived config
+      become: yes
+      when: haproxy is defined
+      shell: |
+          cat >> /etc/keepalived/keepalived.conf << EOF
+
+          vrrp_instance VI_{{namespace}} {
+              state MASTER
+              interface {{nm2_haproxy_nic}}
+              virtual_router_id 61
+              advert_int 1
+              authentication {
+                  auth_type PASS
+                  auth_pass {{haproxy_password}}
+              }
+              virtual_ipaddress {
+                  {{nm2_haproxy_vip}}
+              }
+          }
+
+    - name: start keepalived
+      become: yes
+      when: haproxy is defined
+      shell: "service keepalived restart"
+
+    - name: add haproxy configuration
+      become: yes
+      when: haproxy is defined
+      shell: |
+          cat >> /etc/haproxy/haproxy.cfg << EOF
+
+          frontend {{namespace}}-pcep
+              bind {{ nm2_haproxy_vip }}:{{haproxy_pcep_port}}
+              option tcplog
+              mode tcp
+              default_backend {{namespace}}-pcep-master-nodes
+          
+          backend {{namespace}}-pcep-master-nodes
+              mode tcp
+              balance roundrobin
+              option tcp-check
+              server master-01 {{ master_01 }}:{{pcep_ext_port}} check fall 3 rise 2
+              server master-02 {{ master_02 }}:{{pcep_ext_port}} check fall 3 rise 2
+              server master-03 {{ master_03 }}:{{pcep_ext_port}} check fall 3 rise 2 
+
+          frontend {{namespace}}-prometheus
+              bind {{ haproxy_vip }}:{{haproxy_prometheus_port}}
+              option tcplog
+              mode tcp
+              default_backend {{namespace}}-prometheus-backend
+          
+          backend {{namespace}}-prometheus-backend
+              mode tcp
+              balance roundrobin
+              option tcp-check
+              server master-01 {{ master_01 }}:{{prometheus_ext_port}} check fall 3 rise 2
+              server master-02 {{ master_02 }}:{{prometheus_ext_port}} check fall 3 rise 2
+              server master-03 {{ master_03 }}:{{prometheus_ext_port}} check fall 3 rise 2   
+
+          frontend {{namespace}}-grafana
+              bind {{ haproxy_vip }}:{{haproxy_grafana_port}}
+              option tcplog
+              mode tcp
+              default_backend {{namespace}}-grafana-backend
+          
+          backend {{namespace}}-grafana-backend
+              mode tcp
+              balance roundrobin
+              option tcp-check
+              server master-01 {{ master_01 }}:{{grafana_ext_port}} check fall 3 rise 2
+              server master-02 {{ master_02 }}:{{grafana_ext_port}} check fall 3 rise 2
+              server master-03 {{ master_03 }}:{{grafana_ext_port}} check fall 3 rise 2   
+
+          frontend {{namespace}}-rabbitmq-http
+              bind {{ haproxy_vip }}:{{haproxy_rabbitmq_http_port}}
+              option tcplog
+              mode tcp
+              default_backend {{namespace}}-rabbitmq-http-backend
+          
+          backend {{namespace}}-rabbitmq-http-backend
+              mode tcp
+              balance roundrobin
+              option tcp-check
+              server master-01 {{ master_01 }}:{{rabbitmq_http_ext_port}} check fall 3 rise 2
+              server master-02 {{ master_02 }}:{{rabbitmq_http_ext_port}} check fall 3 rise 2
+              server master-03 {{ master_03 }}:{{rabbitmq_http_ext_port}} check fall 3 rise 2   
+
+          frontend {{namespace}}-rabbitmq-amqp
+              bind {{ haproxy_vip }}:{{haproxy_rabbitmq_amqp_port}}
+              option tcplog
+              mode tcp
+              default_backend {{namespace}}-rabbitmq-amqp-backend
+          
+          backend {{namespace}}-rabbitmq-amqp-backend
+              mode tcp
+              balance roundrobin
+              option tcp-check
+              server master-01 {{ master_01 }}:{{rabbitmq_amqp_ext_port}} check fall 3 rise 2
+              server master-02 {{ master_02 }}:{{rabbitmq_amqp_ext_port}} check fall 3 rise 2
+              server master-03 {{ master_03 }}:{{rabbitmq_amqp_ext_port}} check fall 3 rise 2 
+
+          frontend {{namespace}}-inventory-api
+              bind {{ haproxy_vip }}:{{haproxy_inventory_api_port}}
+              option tcplog
+              mode tcp
+              default_backend {{namespace}}-inventory-api-backend
+          
+          backend {{namespace}}-inventory-api-backend
+              mode tcp
+              balance roundrobin
+              option tcp-check
+              server master-01 {{ master_01 }}:{{inventory_api_ext_port}} check fall 3 rise 2
+              server master-02 {{ master_02 }}:{{inventory_api_ext_port}} check fall 3 rise 2
+              server master-03 {{ master_03 }}:{{inventory_api_ext_port}} check fall 3 rise 2 
+
+          frontend {{namespace}}-shift-yggdrasil-scheduler-api
+              bind {{ haproxy_vip }}:{{haproxy_yggdrasil2_api_port}}
+              option tcplog
+              mode tcp
+              default_backend {{namespace}}-shift-yggdrasil-scheduler-api-backend
+          
+          backend {{namespace}}-shift-yggdrasil-scheduler-api-backend
+              mode tcp
+              balance roundrobin
+              option tcp-check
+              server master-01 {{ master_01 }}:{{yggdrasil2_api_ext_port}} check fall 3 rise 2
+              server master-02 {{ master_02 }}:{{yggdrasil2_api_ext_port}} check fall 3 rise 2
+              server master-03 {{ master_03 }}:{{yggdrasil2_api_ext_port}} check fall 3 rise 2 
+
+    - name: Restart haproxy
+      become: yes
+      when: haproxy is defined
+      shell: "systemctl restart haproxy"

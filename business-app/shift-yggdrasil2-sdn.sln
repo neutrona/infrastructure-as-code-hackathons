@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shift-ui-architect", "shift-planning-ui\shift-ui-architect.csproj", "{EBBEA0B2-24A7-408E-84FA-92AC36F69BD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yggdrasil2", "yggdrasil2\yggdrasil2.csproj", "{E84FA8BF-64E2-47E0-A935-5E843662BB22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shift-yggdrasil2-scheduler", "shift-yggdrasil2-scheduler\shift-yggdrasil2-scheduler.csproj", "{BC47FA13-693F-4208-9E2A-B41B5556F53E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shift-yggdrasil2-runner", "shift-yggdrasil2-runner\shift-yggdrasil2-runner.csproj", "{22B205E8-A402-4033-AA9A-5815A6BCD6C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBBEA0B2-24A7-408E-84FA-92AC36F69BD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBBEA0B2-24A7-408E-84FA-92AC36F69BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBBEA0B2-24A7-408E-84FA-92AC36F69BD5}.Debug|x64.ActiveCfg = Debug|x64
+		{EBBEA0B2-24A7-408E-84FA-92AC36F69BD5}.Debug|x64.Build.0 = Debug|x64
+		{EBBEA0B2-24A7-408E-84FA-92AC36F69BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBBEA0B2-24A7-408E-84FA-92AC36F69BD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBBEA0B2-24A7-408E-84FA-92AC36F69BD5}.Release|x64.ActiveCfg = Release|x64
+		{EBBEA0B2-24A7-408E-84FA-92AC36F69BD5}.Release|x64.Build.0 = Release|x64
+		{E84FA8BF-64E2-47E0-A935-5E843662BB22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E84FA8BF-64E2-47E0-A935-5E843662BB22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E84FA8BF-64E2-47E0-A935-5E843662BB22}.Debug|x64.ActiveCfg = Debug|x64
+		{E84FA8BF-64E2-47E0-A935-5E843662BB22}.Debug|x64.Build.0 = Debug|x64
+		{E84FA8BF-64E2-47E0-A935-5E843662BB22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E84FA8BF-64E2-47E0-A935-5E843662BB22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E84FA8BF-64E2-47E0-A935-5E843662BB22}.Release|x64.ActiveCfg = Release|x64
+		{E84FA8BF-64E2-47E0-A935-5E843662BB22}.Release|x64.Build.0 = Release|x64
+		{BC47FA13-693F-4208-9E2A-B41B5556F53E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC47FA13-693F-4208-9E2A-B41B5556F53E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC47FA13-693F-4208-9E2A-B41B5556F53E}.Debug|x64.ActiveCfg = Debug|x64
+		{BC47FA13-693F-4208-9E2A-B41B5556F53E}.Debug|x64.Build.0 = Debug|x64
+		{BC47FA13-693F-4208-9E2A-B41B5556F53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC47FA13-693F-4208-9E2A-B41B5556F53E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC47FA13-693F-4208-9E2A-B41B5556F53E}.Release|x64.ActiveCfg = Release|x64
+		{BC47FA13-693F-4208-9E2A-B41B5556F53E}.Release|x64.Build.0 = Release|x64
+		{22B205E8-A402-4033-AA9A-5815A6BCD6C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22B205E8-A402-4033-AA9A-5815A6BCD6C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22B205E8-A402-4033-AA9A-5815A6BCD6C8}.Debug|x64.ActiveCfg = Debug|x64
+		{22B205E8-A402-4033-AA9A-5815A6BCD6C8}.Debug|x64.Build.0 = Debug|x64
+		{22B205E8-A402-4033-AA9A-5815A6BCD6C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22B205E8-A402-4033-AA9A-5815A6BCD6C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22B205E8-A402-4033-AA9A-5815A6BCD6C8}.Release|x64.ActiveCfg = Release|x64
+		{22B205E8-A402-4033-AA9A-5815A6BCD6C8}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6399916C-6DB1-4FAF-9D96-B9833A0210B0}
+	EndGlobalSection
+EndGlobal

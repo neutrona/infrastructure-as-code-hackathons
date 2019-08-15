@@ -1,0 +1,40 @@
+#!/bin/bash
+
+kubectl apply -f /opt/{{namespace}}/backend/base
+kubectl apply -f /opt/{{namespace}}/backend/neo4j
+kubectl apply -f /opt/{{namespace}}/backend/rabbitmq
+kubectl apply -f /opt/{{namespace}}/backend/workers/load-balancer.yaml
+
+sleep 60
+
+kubectl apply -f /opt/{{namespace}}/backend/workers/inventory-api.yaml
+kubectl apply -f /opt/{{namespace}}/backend/workers/links-to-writers.yaml
+kubectl apply -f /opt/{{namespace}}/backend/workers/lsp-to-writers.yaml
+kubectl apply -f /opt/{{namespace}}/backend/workers/nm2-toolbox.yaml
+kubectl apply -f /opt/{{namespace}}/backend/workers/pcep-listener.yaml
+kubectl apply -f /opt/{{namespace}}/backend/workers/db-writer-server.yaml
+
+sleep 30
+
+kubectl apply -f /opt/{{namespace}}/backend/workers/db-writer-client.yaml
+
+sleep 60
+
+kubectl apply -f /opt/{{namespace}}/backend/exabgp/exabgp-region1.yaml
+
+sleep 5
+
+kubectl apply -f /opt/{{namespace}}/backend/exabgp/exabgp-region2.yaml
+
+sleep 5
+
+kubectl apply -f /opt/{{namespace}}/backend/pcc
+kubectl apply -f /opt/{{namespace}}/backend/rpm
+
+sleep 120 
+
+kubectl apply -f /opt/{{namespace}}/yggdrasil/
+kubectl apply -f /opt/{{namespace}}/backend/workers/shift-netconf-broker.yaml
+
+
+

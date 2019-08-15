@@ -1,0 +1,107 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # The required headless service for StatefulSets
+  name: shift-netconf-broker
+  labels:
+    app: shift-netconf-broker
+  namespace: {{namespace}}
+spec:
+  ports:
+  - port: 8646
+    name: broker-port
+  clusterIP: None
+  selector:
+    app: shift-netconf-broker
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shift-netconf-broker-config
+  namespace: {{namespace}}
+data:
+  config.json: |
+    {
+      "RESTServerConfig": {
+        "Host": "0.0.0.0",
+        "Port": 8646
+      },
+      "ServerBasicAuth": {
+        "ReadOnly": {
+          "Username": "shift_ro",
+          "Password": "password"
+        },
+        "ReadWrite": {
+          "Username": "shift_rw",
+          "Password": "password"
+        }
+      },
+      "Inventory": {
+        "LoadNodesOnStartUp": true,
+        "InventoryReloadInterval": 300000,
+        "InventoryURI": "http://inventory-api:5002",
+        "InventoryResource": "nodes",
+        "InventoryLimit": 0,
+        "InventoryAuth": {
+          "Username": "shift",
+          "Password": "password"
+        },
+        "InventoryBlackListRegex": ".*RR[0-9].*",
+        "NodeAuth": {
+          "Username": "nni-teme",
+          "Password": "OloA2MU!MiTY#h"
+        },
+        "NodeKeepAliveInterval": 30000
+      },
+      "MessageBroker": {
+        "MessageBrokerHost": "rabbitmq",
+        "MessageBrokerUsername": "admin",
+        "MessageBrokerPassword": "password",
+        "ExchangeName": "NETCONF_ASYNC_BROKER",
+        "RPCRequestQueueSuffix": "_RPC_Request_Queue",
+        "RPCRoutingKeyPrefix":  "NETCONF.request."
+      }
+    }
+
+---
+
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: shift-netconf-broker
+  namespace: {{namespace}}
+spec:
+  serviceName: "shift-netconf-broker"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: shift-netconf-broker
+        version: v1
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role
+                operator: In
+                values: 
+                - worker
+      containers:
+      - name: shift-netconf-broker
+        image: rodalvarez/shift-netconf-broker
+        stdin: true
+        tty: true
+        ports:
+        - name: broker-port
+          containerPort: {{shift_netconf_broker_port}}
+        volumeMounts:
+        - name: config-volume
+          mountPath: /usr/src/app/config.json
+          subPath: config.json
+      volumes:
+      - name: config-volume
+        configMap:
+          name: shift-netconf-broker-config

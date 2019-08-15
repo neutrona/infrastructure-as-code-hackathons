@@ -1,0 +1,5 @@
+flask
+requests
+flask_api
+flask_restful
+flask_httpauth

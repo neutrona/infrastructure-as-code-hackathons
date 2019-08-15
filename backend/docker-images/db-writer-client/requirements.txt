@@ -1,0 +1,4 @@
+pika==0.13.1
+neo4j-driver
+requests
+prometheus_client

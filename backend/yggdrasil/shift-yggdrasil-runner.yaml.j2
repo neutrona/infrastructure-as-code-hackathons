@@ -1,0 +1,64 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: shift-yggdrasil2-runner
+  namespace: {{namespace}}
+spec:
+  serviceName: "shift-yggdrasil2-runner"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: shift-yggdrasil2-runner
+        version: v1
+    spec:
+      serviceAccountName: {{namespace}}-serviceaccount
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role
+                operator: In
+                values: 
+                - worker
+      containers:
+      - name: shift-yggdrasil2-runner
+        image: davidneutrona/shift-yggdrasil2-runner
+        env:
+        - name: rmq_hostname
+          value: {{rmq_host}}
+        - name: rmq_username
+          value: {{rmq_username}}
+        - name: rmq_password
+          value: {{rmq_password}}
+        - name: rmq_port
+          value: {{rmq_port}}
+        - name: neo4j_hostname
+          value: {{internal_neo4j_host}}
+        - name: neo4j_bolt_port
+          value: {{internal_neo4j_bolt_port}} 
+        - name: neo4j_username
+          value: {{neo4j_username}}
+        - name: neo4j_password
+          value: {{neo4j_password}}
+        - name: shift_repository_url
+          value: {{intent_repository_url}}
+        - name: odl_vip
+          value: {{odl_vip}}
+        - name: odl_user
+          value: {{odl_user}}
+        - name: odl_password
+          value: {{odl_password}}
+        - name: tower_uri
+          value: {{ansible_tower_uri}}
+        - name: tower_user
+          value: {{ansible_tower_user}}
+        - name: tower_password
+          value: {{ansible_tower_password}}
+        resources:
+          requests:
+            memory: "512Mi"
+          limits:
+            memory: "1024Mi"
+

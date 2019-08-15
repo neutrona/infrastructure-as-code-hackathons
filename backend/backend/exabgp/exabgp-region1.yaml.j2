@@ -1,0 +1,118 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # The required headless service for StatefulSets
+  name: exabgp-region1
+  labels:
+    app: exabgp-region1
+  namespace: {{namespace}}
+spec:
+  ports:
+  - port: 54321
+    name: local-server
+  - port: 60000
+    name: exabgp-prom
+  - port: 60001
+    name: mastership-prom
+  clusterIP: None
+  selector:
+    app: exabgp-region1
+---    
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: exabgp-region1
+  namespace: {{namespace}}
+spec:
+  serviceName: "exabgp-region1"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: exabgp-region1
+        version: v1
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: zone
+                operator: In
+                values:
+                - {{region1}}
+              - key: role
+                operator: In
+                values: 
+                - worker
+      containers:
+      - name: exabgp-region1
+        image: rodalvarez/exabgp-to-rabbitmq
+        env:
+        - name: RID
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: BGP_PEER
+          value: "{{bgp_peer_1}}"
+        - name: RID
+          value: $(RID)
+        - name: LOCAL_IP
+          value: $(RID)
+        - name: LOCAL_AS
+          value: "{{bgp_local_as_1}}"
+        - name: PEER_AS
+          value: "{{bgp_peer_as}}"
+        - name: RMQ_HOST
+          value: {{rmq_host}}
+        - name: RMQ_PORT
+          value: "{{rmq_port}}"
+        - name: RMQ_USERNAME
+          value: {{rmq_username}}
+        - name: RMQ_PASSWORD
+          value: {{rmq_password}}
+        - name: RMQ_EXCHANGE
+          value: shift_topology_exchange
+        - name: RMQ_QUEUE
+          value: shift_links_topology_queue_1
+        - name: RMQ_ROUTING_KEY
+          value: shift_links_topology_key_1 
+        - name: EXABGP_PROM_PORT
+          value: "60000"
+        - name: LOCAL_SERVER_BINDING_ADDRESS
+          value: "0.0.0.0"
+        - name: LOCAL_SERVER_BINDING_PORT
+          value: "54321"
+        - name: REMOTE_SERVER_PORT
+          value: "54321" 
+        - name: SPEAKER_PREFERENCE
+          value: "150"
+        - name: ATTACHED_DATA_QUEUE
+          value: shift_links_topology_queue_1
+        - name: ATTACHED_DATA_KEY
+          value: shift_links_topology_key_1
+        - name: REMOTE_SERVER_ADDRESS
+          value: exabgp-region2 
+        - name: RMQ_CONTROL_EXCHANGE
+          value: shift_control_exchange
+        - name: RMQ_CONTROL_QUEUE
+          value: shift_control_queue
+        - name: RMQ_CONTROL_ROUTING_KEY
+          value: shift_control_key
+        - name: MASTERSHIP_PROM_PORT
+          value: "60001" 
+        ports:
+        - name: local-server
+          containerPort: 54321
+        - name: bgp
+          containerPort: 179
+          hostPort: 179
+        - name: exabgp-prom
+          containerPort: 60000
+        - name: mastership-prom
+          containerPort: 60001
+        resources:
+          requests:
+            cpu: "200m"
+          limits:
+            cpu: "500m"

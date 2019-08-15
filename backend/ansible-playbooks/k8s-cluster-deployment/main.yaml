@@ -1,0 +1,23 @@
+---
+
+- hosts: all
+  gather_facts: yes
+  remote_user: '{{ssh_user}}'
+  become_method: sudo
+  vars_files:
+  - ../vars.yaml
+  tasks:
+
+  roles:
+    - base
+    - docker
+    # - haproxy
+    - haproxy-cluster
+    - kube
+    - masters
+    - nodes
+    - kubectl
+    - weavenet
+    - logrotate
+    - dashboard
+    - helm  

@@ -1,0 +1,25 @@
+
+[haproxy]
+k8s-HAProxy-01 ansible_host={{haproxy_01}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} haproxy=haproxy01
+k8s-HAProxy-02 ansible_host={{haproxy_02}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} haproxy=haproxy02
+k8s-HAProxy-03 ansible_host={{haproxy_03}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} haproxy=haproxy03
+
+[masters]
+k8s-master-01 ansible_host={{master_01}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} master=master01
+k8s-master-02 ansible_host={{master_02}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} master=master02
+k8s-master-03 ansible_host={{master_03}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} master=master03
+
+[workers]
+k8s-node-01 ansible_host={{node_01}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} node=node01
+k8s-node-02 ansible_host={{node_02}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} node=node02
+k8s-node-03 ansible_host={{node_03}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} node=node03
+k8s-node-04 ansible_host={{node_04}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} node=node04
+k8s-node-05 ansible_host={{node_05}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} node=node05
+k8s-node-06 ansible_host={{node_06}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} node=node06
+k8s-node-07 ansible_host={{node_07}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} node=node07
+k8s-node-08 ansible_host={{node_08}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} node=node08
+
+[opendaylight]
+odl-01 ansible_host={{odl_01}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} odl=odl1
+odl-02 ansible_host={{odl_02}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} odl=odl2
+odl-03 ansible_host={{odl_03}} ansible_ssh_user={{ssh_user}} ansible_ssh_private_key_file={{sshkey}} ansible_sudo_pass={{ssh_sudo_password}} odl=odl3

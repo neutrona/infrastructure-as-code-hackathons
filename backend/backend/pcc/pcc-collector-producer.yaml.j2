@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # The required headless service for StatefulSets
+  name: pcc-collector-producer
+  labels:
+    app: pcc-collector-producer
+  namespace: {{namespace}}
+spec:
+  ports:
+  - port: 60000
+    name: prom-port
+  clusterIP: None
+  selector:
+    app: pcc-collector-producer
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: pcc-collector-producer
+  namespace: {{namespace}}
+spec:
+  serviceName: "pcc-collector-producer"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pcc-collector-producer
+        version: v1
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role
+                operator: In
+                values: 
+                - worker
+      containers:
+      - name: pcc-collector-producer
+        image: rodalvarez/pcc-collector-producer
+        env:
+        - name: RMQ_USERNAME
+          value: {{rmq_username}}
+        - name: RMQ_PASSWORD
+          value: {{rmq_password}}
+        - name: RMQ_HOST
+          value: {{rmq_host}}
+        - name: NETCONF_BROKER_API_HOST
+          value: "{{netconf_broker_api_host}}"
+        - name: NETCONF_BROKER_API_USERNAME
+          value: {{netconf_broker_api_username}}
+        - name: NETCONF_BROKER_API_PASSWORD
+          value: {{netconf_broker_api_password}}
+        ports:
+        - containerPort: 60000
+          name: prom-port

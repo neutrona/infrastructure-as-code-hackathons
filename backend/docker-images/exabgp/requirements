@@ -1,0 +1,2 @@
+prometheus_client
+pika==0.13.1

@@ -1,0 +1,30 @@
+---
+
+    - name: Tagging nodes
+      when: master is defined and master == 'master01'
+      shell: |
+          kubectl label nodes {{node_01_hostname}} zone={{region1}} &&
+          kubectl label nodes {{node_03_hostname}} zone={{region1}} &&
+          kubectl label nodes {{node_05_hostname}} zone={{region1}} &&
+          kubectl label nodes {{node_02_hostname}} zone={{region2}} &&
+          kubectl label nodes {{node_04_hostname}} zone={{region2}} &&
+          kubectl label nodes {{node_06_hostname}} zone={{region2}} &&
+          kubectl label nodes {{node_08_hostname}} zone={{region2}} &&
+          kubectl label nodes {{node_07_hostname}} zone={{region1}} &&
+          kubectl label nodes {{node_01_hostname}} role=worker &&
+          kubectl label nodes {{node_02_hostname}} role=worker &&
+          kubectl label nodes {{node_03_hostname}} role=worker &&
+          kubectl label nodes {{node_04_hostname}} role=worker &&
+          kubectl label nodes {{node_05_hostname}} mq=True &&
+          kubectl label nodes {{node_06_hostname}} mq=True &&
+          kubectl label nodes {{node_07_hostname}} mq=True &&
+          kubectl label nodes {{node_08_hostname}} mq=True &&
+          kubectl label nodes {{node_05_hostname}} db=True &&
+          kubectl label nodes {{node_07_hostname}} db=True &&
+          kubectl label nodes {{node_08_hostname}} db=True &&
+          kubectl label nodes {{node_06_hostname}} db=True &&
+          kubectl label nodes {{node_05_hostname}} storage=True &&
+          kubectl label nodes {{node_07_hostname}} storage=True &&
+          kubectl label nodes {{node_08_hostname}} storage=True &&
+          kubectl label nodes {{node_06_hostname}} storage=True    
+      ignore_errors: yes      

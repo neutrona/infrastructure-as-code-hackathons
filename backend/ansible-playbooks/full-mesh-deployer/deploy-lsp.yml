@@ -1,0 +1,32 @@
+---
+
+- name: Deploy MPLS RSVP-TE LSP
+  # hosts: "{{ SOURCE_HOST_MGMT }}"
+  hosts: localhost
+  connection: local
+  roles:
+    - Juniper.junos
+  gather_facts: no
+  vars_files:
+      - vars/juniper_login.yml
+  tasks:
+    # - import_tasks: tasks/deploy-mpls-rsvp-te-lsp-juniper.yml
+    - name: Create Juniper config file
+      template: src=files/mpls-rsvp-te-lsp.xml.j2 dest=files/mpls-rsvp-te-lsp.xml
+      delegate_to: localhost
+    
+    - name: Display rendered configuration (single service interface)
+      debug: msg="{{ lookup('file', 'files/mpls-rsvp-te-lsp.xml') }}"
+    
+    - name: Install config on Juniper
+      junos_install_config:
+        host: "{{ SOURCE_HOST_MGMT }}"
+        port: "{{ netconf_port }}"
+        user: "{{ netconf_user }}"
+        passwd: "{{ netconf_pass }}"
+        file: files/mpls-rsvp-te-lsp.xml
+        comment: "TEME: MPLS RSVP-TE DEPLOY LSP"
+        check_commit_wait: 4
+        timeout: 180
+
+

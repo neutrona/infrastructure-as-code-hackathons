@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # Expose the port on each node
+  name: odl-ext
+  labels:
+    app: odl
+  namespace: {{namespace}}
+spec:
+  ports:
+  - name: pcep
+    port: 4189
+    protocol: TCP
+    targetPort: 4189
+    nodePort: 31189
+  - name: restconf
+    port: 8181
+    protocol: TCP
+    targetPort: 8181
+    nodePort: 30818    
+  selector:
+    app: odl
+  type: NodePort # Or LoadBalancer in production w/ proper security
+---
+apiVersion: v1
+kind: Service
+metadata:
+  # The required headless service for StatefulSets
+  name: odl
+  labels:
+    app: odl
+  namespace: {{namespace}}
+spec:
+  ports:
+  - port: 8181
+    name: api
+  clusterIP: None
+  selector:
+    app: odl
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: odl
+  namespace: {{namespace}}
+spec:
+  serviceName: "odl"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: odl
+        version: v1
+    spec:
+      #affinity:
+      #  nodeAffinity:
+      #    requiredDuringSchedulingIgnoredDuringExecution:
+      #      nodeSelectorTerms:
+      #      - matchExpressions:
+      #        - key: role
+      #          operator: In
+      #          values: 
+      #          - worker
+      containers:
+      - name: odl
+        image: rodalvarez/odl
+        ports:
+        - name: pcep
+          containerPort: 4189
+        - name: restconf
+          containerPort: 8181
+        #resources:
+        #  requests:
+        #    cpu: "200m"
+        #  limits:
+        #    cpu: "500m"

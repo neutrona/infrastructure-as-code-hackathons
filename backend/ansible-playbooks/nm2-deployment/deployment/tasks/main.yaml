@@ -1,0 +1,159 @@
+---
+
+- name: Create {{namespace}} directory
+  when: master is defined and master == 'master01'
+  become: yes
+  file:
+    path: /opt/{{namespace}}/backend/{{item}}
+    state: directory
+    recurse: yes
+  with_items:
+    - base
+    - neo4j
+    - rabbitmq
+    - workers
+    - exabgp
+    - pcc
+    - rpm
+
+- name: copy base files
+  when: master is defined and master == 'master01'
+  become: yes
+  template: 
+    src: ../../../backend/base/{{item}}.j2
+    dest: /opt/{{namespace}}/backend/base/{{item}}
+  with_items:
+    - service-account.yaml
+    - namespace.yaml
+
+- name: copy neo4j files
+  when: master is defined and master == 'master01'
+  become: yes
+  template: 
+    src: ../../../backend/neo4j/{{item}}.j2
+    dest: /opt/{{namespace}}/backend/neo4j/{{item}}
+  with_items:
+    - neo4j-region1.yaml
+    - neo4j-region2.yaml
+
+- name: copy rabbitmq files
+  when: master is defined and master == 'master01'
+  become: yes
+  template: 
+    src: ../../../backend/rabbitmq/rabbitmq.yaml.j2
+    dest: /opt/{{namespace}}/backend/rabbitmq/rabbitmq.yaml
+
+- name: copy workers files
+  when: master is defined and master == 'master01'
+  become: yes
+  template: 
+    src: ../../../backend/workers/{{item}}.j2
+    dest: /opt/{{namespace}}/backend/workers/{{item}}
+  with_items:
+    - db-writer-client.yaml
+    - db-writer-server.yaml
+    - inventory-api.yaml
+    - links-to-writers.yaml
+    - load-balancer.yaml
+    - lsp-to-writers.yaml
+    - nm2-toolbox.yaml
+    - pcep-listener.yaml
+    - shift-netconf-broker.yaml
+
+- name: copy exabgp files
+  when: master is defined and master == 'master01'
+  become: yes
+  template: 
+    src: ../../../backend/exabgp/{{item}}.j2
+    dest: /opt/{{namespace}}/backend/exabgp/{{item}}
+  with_items:
+    - exabgp-region1.yaml
+    - exabgp-region2.yaml
+
+- name: copy pcc files
+  when: master is defined and master == 'master01'
+  become: yes
+  template: 
+    src: ../../../backend/pcc/{{item}}.j2
+    dest: /opt/{{namespace}}/backend/pcc/{{item}}
+  with_items:
+    - pcc-collector-consumer.yaml
+    - pcc-collector-producer.yaml
+    - pcc-to-writers.yaml
+
+- name: copy rpm files
+  when: master is defined and master == 'master01'
+  become: yes
+  template: 
+    src: ../../../backend/rpm/{{item}}.j2
+    dest: /opt/{{namespace}}/backend/rpm/{{item}}
+  with_items:
+    - rpm-collector-consumer.yaml
+    - rpm-collector-producer.yaml
+    - rpm-to-writers.yaml
+
+- name: Create monitoring directory
+  when: master is defined and master == 'master01'
+  become: yes
+  file:
+    path: /opt/{{namespace}}/monitoring/
+    state: directory
+
+- name: copy monitoring files
+  when: master is defined and master == 'master01'
+  become: yes
+  template: 
+    src: ../../../monitoring/{{item}}.j2
+    dest: /opt/{{namespace}}/monitoring/{{item}}
+  with_items:
+    - prometheus.yaml
+
+- name: copy monitoring files
+  when: master is defined and master == 'master01'
+  become: yes
+  copy: 
+    src: ../../../monitoring/{{item}}
+    dest: /opt/{{namespace}}/monitoring/{{item}}
+  with_items:
+    - manifests-all.yaml
+
+
+- name: Create yggdrasil directory
+  when: master is defined and master == 'master01'
+  become: yes
+  file:
+    path: /opt/{{namespace}}/yggdrasil/
+    state: directory
+
+- name: copy yggdrasil files
+  when: master is defined and master == 'master01'
+  become: yes
+  template: 
+    src: ../../../yggdrasil/{{item}}.j2
+    dest: /opt/{{namespace}}/yggdrasil/{{item}}
+  with_items:
+    - shift-yggdrasil-scheduler-yaml
+    - shift-yggdrasil-runner-yaml
+    - k8s-api-helper.yaml
+
+- name: copy deploy and delete files
+  when: master is defined and master == 'master01'
+  become: yes
+  template: 
+    src: ../../../{{item}}.j2
+    dest: /opt/{{namespace}}/{{item}}
+  with_items:
+    - deploy-nm2.sh
+    - delete-nm2.sh
+
+- name: add execute permissions to deploy and delete files
+  when: master is defined and master == 'master01'
+  become: yes
+  shell: "chmod +x /opt/{{namespace}}/{{item}}"
+  with_items:
+    - deploy-nm2.sh
+    - delete-nm2.sh
+
+- name: deploy {{namespace}}
+  shell: "/opt/{{namespace}}/deploy-nm2.sh"
+  when: master is defined and master == 'master01'

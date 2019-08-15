@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  gather_facts: yes
+  remote_user: '{{ssh_user}}'
+  become_method: sudo
+  vars_files:
+  - ../vars.yaml
+  tasks:
+
+  roles:
+    - base
+    - data
+    - rook
+    - odl
+    - haproxy
+    - neo4j
+    - deployment

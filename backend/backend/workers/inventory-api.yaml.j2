@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # The required headless service for StatefulSets
+  name: inventory-api
+  labels:
+    app: inventory-api
+  namespace: {{namespace}}
+spec:
+  ports:
+  - port: 5002
+    name: inventory
+  - port: 60000
+    name: prom-port
+  clusterIP: None
+  selector:
+    app: inventory-api
+---
+apiVersion: v1
+kind: Service
+metadata:
+  # Expose the management HTTP port on each node
+  name: inventory-api-ext
+  labels:
+    app: inventory-api
+  namespace: {{namespace}}
+spec:
+  ports:
+  - name: inventory
+    port: 5002
+    protocol: TCP
+    targetPort: 5002
+    nodePort: {{inventory_api_ext_port}}
+  selector:
+    app: inventory-api
+  type: NodePort # Or LoadBalancer in production w/ proper security
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: inventory-api
+  namespace: {{namespace}}
+spec:
+  serviceName: "inventory-api"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: inventory-api
+        version: v1
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role
+                operator: In
+                values: 
+                - worker
+      containers:
+      - name: inventory-api
+        image: rodalvarez/inventory-api
+        env:
+        - name: NEO4JDB_HOST
+          value: "load-balancer"
+        - name: NEO4JDB_USERNAME
+          value: {{neo4j_username}}
+        - name: NEO4JDB_PASSWORD
+          value: {{neo4j_password}}
+        - name: API_USERNAME
+          value: {{inventory_api_username}}
+        - name: API_PASSWORD
+          value: {{inventory_api_password}}
+        ports:
+        - name: inventory
+          containerPort: 5002
+        - name: prom-port
+          containerPort: 60000

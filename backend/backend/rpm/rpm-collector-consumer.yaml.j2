@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # The required headless service for StatefulSets
+  name: rpm-collector-consumer
+  labels:
+    app: rpm-collector-consumer
+  namespace: {{namespace}}
+spec:
+  ports:
+  - port: 60000
+    name: prom-port
+  clusterIP: None
+  selector:
+    app: rpm-collector-consumer
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: rpm-collector-consumer
+  namespace: {{namespace}}
+spec:
+  serviceName: "rpm-collector-consumer"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rpm-collector-consumer
+        version: v1
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role
+                operator: In
+                values: 
+                - worker
+      containers:
+      - name: rpm-collector-producer
+        image: rodalvarez/rpm-collector-consumer
+        env:
+        - name: RMQ_USERNAME
+          value: {{rmq_username}}
+        - name: RMQ_PASSWORD
+          value: {{rmq_password}}
+        - name: RMQ_HOST
+          value: {{rmq_host}}
+        ports:
+        - containerPort: 60000
+          name: prom-port

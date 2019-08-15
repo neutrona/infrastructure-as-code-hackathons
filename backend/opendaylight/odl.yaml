@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: opendaylight
+spec:
+  containers:
+  - name: opendaylight
+    image: gitlab:4567/networkmodel2.0/opendaylight_poc/opendaylight_server
+  imagePullSecrets:
+  - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: opendaylight
+spec:
+  ports:
+  - name: odlcluster
+    port: 7800 
+    protocol: TCP
+    targetPort: 7800
+    nodePort: 31800 
+  - name: odlclister2
+    port: 2550
+    protocol: TCP
+    targetPort: 2550
+    nodePort: 31550
+  - name: http
+    port: 8080 
+    protocol: TCP
+    targetPort: 8080  
+    nodePort: 31080 
+  - name: bgp
+    port: 179 
+    protocol: TCP
+    targetPort: 179  
+    nodePort: 30179 
+  selector:
+    app: opendaylight
+  type: NodePort
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: odl-config
+data:
+  akka.conf: |
+    odl-cluster-data {
+      akka {
+        remote {
+          artery {
+            enabled = off
+            canonical.hostname = "10.255.0.158"  # La ip del equipo
+            canonical.port = 2550
+          }
+          netty.tcp {
+            hostname = "10.255.0.158"
+            port = 2550
+          }
+        }
+        cluster {
+          seed-nodes = [
+              "akka.tcp://opendaylight-cluster-data@10.255.0.158:2550", # La ip del equipo
+              "akka.tcp://opendaylight-cluster-data@10.255.0.209:2550"] # La ip del otro nodo  (member2)
+          roles = ["member-1"] # En el otro equipo colocar le nombre "member-2"
+        }
+        persistence {
+          journal {
+            leveldb {
+            }
+          }
+        }
+      }
+    }

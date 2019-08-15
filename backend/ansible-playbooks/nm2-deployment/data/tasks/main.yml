@@ -1,0 +1,7 @@
+---
+
+- name: kubectl create namespace nm2
+  shell: "kubectl create namespace {{namespace}}"
+  when: master is defined and master == 'master01'
+  ignore_errors: yes
+

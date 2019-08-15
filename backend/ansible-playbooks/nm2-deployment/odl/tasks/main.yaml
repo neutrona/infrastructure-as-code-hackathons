@@ -1,0 +1,159 @@
+---
+
+    - name: add nonlocal bind and restar sysctl
+      become: yes
+      when: odl is defined
+      shell: "echo 'net.ipv4.ip_nonlocal_bind=1' >> /etc/sysctl.conf && sysctl -p"
+
+    - name: install packages
+      when: odl is defined
+      become: yes
+      apt: name={{item}} state=installed
+      with_items:
+           - openjdk-8-jdk
+           - mininet
+           - wget
+           - curl
+           - keepalived
+
+    - name: add keepalived config
+      become: yes
+      when: odl is defined
+      shell: |
+          cat > /etc/keepalived/keepalived.conf << EOF
+
+          vrrp_instance VI_1 {
+              state MASTER
+              interface {{odl_interface}}
+              virtual_router_id 51
+              advert_int 1
+              authentication {
+                  auth_type PASS
+                  auth_pass {{odl_keepalived_password}}
+              }
+              virtual_ipaddress {
+                  {{odl_vip}}
+              }
+          }
+
+    - name: start keepalived
+      become: yes
+      when: odl is defined
+      shell: "service keepalived start && update-rc.d keepalived defaults"
+
+    - name: Download karaf-0.7.1.tar.gz
+      when: odl is defined
+      become: yes
+      unarchive:
+        src: https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/integration/karaf/0.7.1/karaf-0.7.1.tar.gz
+        dest: /opt/
+        remote_src: yes
+
+    - name: export JAVA_HOME
+      when: odl is defined
+      become: yes
+      shell: "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64"
+
+    - name: create key
+      when: odl is defined
+      become: yes
+      shell: "ssh-keygen -t dsa -f /opt/karaf-0.7.1/karaf.id_dsa -N karaf"
+
+    - name: show pub key
+      when: odl is defined
+      become: yes
+      shell: "cat /opt/karaf-0.7.1/karaf.id_dsa.pub"
+      register: pub_key
+
+    - name: show priv key
+      when: odl is defined
+      become: yes
+      shell: "cat /opt/karaf-0.7.1/karaf.id_dsa.pub"
+      register: priv_key
+
+    - name: Create configuration/initial directory
+      when: odl is defined 
+      become: yes
+      file:
+        path: /opt/karaf-0.7.1/configuration/initial
+        state: directory
+        recurse: yes
+
+    - name: copy akka conf
+      when: odl is defined and odl == 'odl1'
+      become: yes
+      template: 
+        src: ../files/akka-1.conf.j2
+        dest: /opt/karaf-0.7.1/configuration/initial/akka.conf
+
+    - name: copy akka conf
+      when: odl is defined and odl == 'odl2'
+      become: yes
+      template: 
+        src: ../files/akka-2.conf.j2
+        dest: /opt/karaf-0.7.1/configuration/initial/akka.conf
+
+    - name: copy akka conf
+      when: odl is defined and odl == 'odl3'
+      become: yes
+      template: 
+        src: ../files/akka-3.conf.j2
+        dest: /opt/karaf-0.7.1/configuration/initial/akka.conf
+
+    - name: copy module-shards.conf
+      when: odl is defined
+      become: yes
+      template: 
+        src: ../files/module-shards.conf.j2
+        dest: /opt/karaf-0.7.1/configuration/initial/module-shards.conf
+
+    - name: install karaf packages
+      when: odl is defined
+      become: yes
+      shell: "/opt/karaf-0.7.1/bin/./start && sleep 60 && /opt/karaf-0.7.1/bin/./client feature:install odl-bgpcep-pcep-topology odl-netconf-util odl-bgpcep-config-files odl-bgpcep-concepts odl-netconf-tcp odl-bgpcep-pcep-api odl-bgpcep-pcep-stateful07 odl-netconf-client odl-config-netconf-connector odl-bgpcep-bgp odl-bgpcep-bgp-evpn odl-netconf-topology odl-openflowplugin-app-topology odl-netconf-ssh odl-netconf-connector-all odl-akka-system-2.4 odl-netconf-notifications-api odl-bgpcep-bgp-path-selection-mode odl-yangtools-common odl-openflowplugin-app-config-pusher odl-bgpcep-bgp-dependencies odl-bgpcep-programming-impl odl-netconf-mapping-api  odl-bgpcep-bgp-inet odl-bgpcep-pcep-auto-bandwidth odl-bgpcep-bgp-parser odl-bgpcep-rsvp-api odl-bgpcep-pcep-tunnel-provider odl-l2switch-switch-rest odl-bgpcep-bgp-labeled-unicast odl-netconf-connector-ssh odl-config-all odl-netconf-api  odl-bgpcep-pcep-segment-routing odl-bgpcep-bmp odl-bgpcep-bgp-topology odl-netconf-callhome-ssh odl-config-api odl-bgpcep-pcep odl-restconf odl-bgpcep-topology-api odl-config-core odl-akka-persistence-2.4 odl-netconf-notifications-impl odl-bgpcep-bgp-linkstate  odl-bgpcep-rsvp odl-mdsal-eos-common odl-bgpcep-pcep-dependencies odl-bgpcep-pcep-topology-provider odl-bgpcep-extras-dependencies odl-akka-scala-2.11 odl-bgpcep-bgp-rib-api odl-config-persister odl-bgpcep-bgp-parser-api  odl-netconf-impl  odl-l2switch-all odl-dlux-core odl-dluxapps-yangutils odl-dluxapps-nodes odl-dluxapps-topology odl-dluxapps-yangman odl-unimgr-dlux odl-dluxapps-yangvisualizer odl-dluxapps-yangui odl-netvirt-ui odl-dluxapps-applications features-dlux features-dluxapps odl-mdsal-clustering odl-jolokia"
+
+    - name: stop karaf
+      when: odl is defined
+      become: yes
+      shell: "processtokill=$(ps aux | grep karaf | grep -v grep | awk {'print $2'}) && kill -9 $processtokill && sleep 60 && nohup /opt/karaf-0.7.1/bin/./start 0<&- &>/dev/null &"
+
+    - name: Wait for karaf
+      pause:
+        seconds: 60
+
+    - name: run karaf
+      when: odl is defined and odl == 'odl3'
+      become: yes
+      shell: "nohup /opt/karaf-0.7.1/bin/./start 0<&- &>/dev/null &"
+
+    - name: Wait for karaf
+      pause:
+        seconds: 60
+
+    - name: run karaf
+      when: odl is defined and odl != 'odl3'
+      become: yes
+      shell: "nohup /opt/karaf-0.7.1/bin/./start 0<&- &>/dev/null &"      
+
+    - name: modifying rc.local
+      become: yes
+      when: odl is defined
+      shell: |
+          cat > /etc/rc.local << EOF
+
+          #!/bin/sh -e
+          #
+          # rc.local
+          #
+          # This script is executed at the end of each multiuser runlevel.
+          # Make sure that the script will "exit 0" on success or any other
+          # value on error.
+          #
+          # In order to enable or disable this script just change the execution
+          # bits.
+          #
+          # By default this script does nothing.
+
+          nohup /opt/karaf-0.7.1/bin/./start 0<&- &>/dev/null &
+
+          exit 0

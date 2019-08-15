@@ -1,0 +1,40 @@
+---
+
+    - name: Copy rook files
+      when: master is defined and master == 'master01'
+      template:
+        src: ../../files/{{item}}
+        dest: /tmp/{{item}}
+      with_items:
+        - rook-operator.yaml
+        - rook-cluster.yaml
+        - rook-storageclass.yaml
+        - rook-tools.yaml
+
+    - name: Create operator
+      when: master is defined and master == 'master01'
+      shell: "kubectl create -f /tmp/rook-operator.yaml"
+      ignore_errors: yes
+
+    - name: Pause for letting operator to be running
+      pause:
+        minutes: 3
+
+    - name: Create cluster
+      when: master is defined and master == 'master01'
+      shell: "kubectl create -f /tmp/rook-cluster.yaml"
+      ignore_errors: yes
+
+    - name: Create block storage class
+      when: master is defined and master == 'master01'
+      shell: "kubectl create -f /tmp/rook-storageclass.yaml"
+      ignore_errors: yes
+
+    - name: Pause for letting cluster to be fully running
+      pause:
+        minutes: 3
+
+    - name: Deploy rook-tools 
+      when: master is defined and master == 'master01'
+      shell: "kubectl create -f /tmp/rook-tools.yaml"
+      ignore_errors: yes

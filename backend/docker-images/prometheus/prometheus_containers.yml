@@ -1,0 +1,28 @@
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'docker_containers'
+    static_configs:
+      - targets: ['db-writer-server:60000', 'db-writer-client:60000', 'exabgp-region1:60000', 'exabgp-region1:60001', 'exabgp-region2:60000', 'exabgp-region2:60001', 'links-to-writers:60000', 'lsp-to-writers:60000', 'pcep-listener:60000', 'pcc-collector-consumer:60000', 'pcc-collector-producer:60000', 'pcc-to-writers:60000', 'rpm-collector-consumer:60000', 'rpm-collector-producer:60000', 'rpm-to-writers:60000', 'shift-yggdrasil2-scheduler:60000']
+

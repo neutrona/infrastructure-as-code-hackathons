@@ -1,0 +1,74 @@
+<configuration>
+  <policy-options>
+      <policy-statement>
+          <name>ted2bgp</name>
+          <term>
+              <name>10</name>
+              <from>
+                  <protocol>isis</protocol>
+              </from>
+              <then>
+                  <accept/>
+              </then>
+          </term>
+      </policy-statement>
+  </policy-options>
+  <protocols>
+      <mpls>
+      <lsp-external-controller>
+        <name>pccd</name>
+      </lsp-external-controller>
+      <traffic-engineering>
+          <database>
+              <import>
+                  <policy>ted2bgp</policy>
+              </import>
+          </database>
+      </traffic-engineering>      
+      {% for LSP in LABEL_SWITCHED_PATHS %}
+      <label-switched-path>
+        <name>NM2-STD-{{ LSP.SOURCE_NAME }}-{{ LSP.TARGET_NAME }}</name>
+        <from>{{ LSP.SOURCE_HOST }}</from>
+        <to>{{ LSP.TARGET_HOST }}</to>
+        <adaptive/>
+        <fast-reroute>
+        </fast-reroute>
+        <auto-bandwidth>
+          <adjust-interval>3600</adjust-interval>
+          <adjust-threshold>5</adjust-threshold>
+          <maximum-bandwidth>10g</maximum-bandwidth>
+          <adjust-threshold-overflow-limit>3</adjust-threshold-overflow-limit>
+          <adjust-threshold-underflow-limit>3</adjust-threshold-underflow-limit>
+        </auto-bandwidth>
+        <primary>
+          <name>NM2-STD-{{ LSP.SOURCE_NAME }}-{{ LSP.TARGET_NAME }}-PRIMARY</name>
+          {% if LSP.PRIMARY_PATH.EXTENDED_ADMIN_GROUPS %}
+          <admin-group-extended operation="replace">
+          {% for EAG in LSP.PRIMARY_PATH.EXTENDED_ADMIN_GROUPS %}
+            <include-any>{{ EAG }}</include-any>
+          {% endfor %}
+          </admin-group-extended>
+          {% endif %}
+        </primary>
+        {% for PATH in LSP.SECONDARY_PATHS %}
+        <secondary>
+          <name>NM2-STD-{{ LSP.SOURCE_NAME }}-{{ LSP.TARGET_NAME }}-SECONDARY-{{ loop.index0 }}</name>
+          <standby/>
+          <class-of-service>1</class-of-service>
+        </secondary>
+        {% endfor %}
+        <lsp-external-controller>pccd</lsp-external-controller>
+      </label-switched-path>
+      <path>
+        <name>NM2-STD-{{ LSP.SOURCE_NAME }}-{{ LSP.TARGET_NAME }}-PRIMARY</name>
+      </path>
+      {% for PATH in LSP.SECONDARY_PATHS %}
+      <path>
+        <name>NM2-STD-{{ LSP.SOURCE_NAME }}-{{ LSP.TARGET_NAME }}-SECONDARY-{{ loop.index0 }}</name>
+      </path>
+      {% endfor %}
+      {% endfor %}
+    </mpls>
+  </protocols>
+</configuration>
+

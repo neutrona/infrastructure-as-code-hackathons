@@ -1,0 +1,3 @@
+pika==0.13.1
+netaddr
+prometheus_client

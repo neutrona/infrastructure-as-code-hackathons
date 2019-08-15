@@ -1,0 +1,56 @@
+# /opt/karaf-0.7.1/configuration/initial/module-shards.conf
+module-shards = [
+    {
+        name = "default"
+        shards = [
+            {
+                name="default"
+                replicas = [
+                    "member-1", 
+                    "member-2",
+                    "member-3"
+                ]
+            }
+        ]
+    },
+    {
+        name = "topology"
+        shards = [
+            {
+                name="topology"
+                replicas = [
+                    "member-1", 
+                    "member-2",
+                    "member-3"
+                ]
+            }
+        ]
+    },
+    {
+        name = "inventory"
+        shards = [
+            {
+                name="inventory"
+                replicas = [
+                    "member-1",
+                    "member-2",
+                    "member-3"
+                ]
+            }
+        ]
+    },
+         {
+             name = "toaster"
+             shards = [
+                 {
+                    name="toaster"
+                    replicas = [
+                        "member-1",
+                        "member-2",
+                        "member-3"
+                    ]
+                 }
+             ]
+         }
+
+]

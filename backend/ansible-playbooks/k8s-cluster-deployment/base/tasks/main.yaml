@@ -1,0 +1,24 @@
+---
+
+    - name: Adding username in sudoers
+      become: yes
+      shell: "echo '{{ssh_user}} ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers"
+
+    - name: Install list of packages
+      become: yes
+      apt:
+        name: "{{ packages }}"
+        update_cache: yes
+      vars:
+        packages:
+           - software-properties-common
+           - curl 
+           - wget 
+           - apt-transport-https
+           - ca-certificates
+           - gnupg2
+
+    - name: Apt update
+      become: yes
+      apt:
+        update_cache: yes
