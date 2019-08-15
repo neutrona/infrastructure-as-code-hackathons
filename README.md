@@ -23,3 +23,14 @@ Some tools and platforms we used:
 - Prometheus
 - Grafana
 - Juniper JunOS
+
+Some things we didn't do:
+
+- Clean code
+- Runners monitoring strategy, ELK maybe?
+- O(n) ==> O(1)
+- CI/CD (backend)
+- Maybe [Dgraph](https://dgraph.io/) instead of Neo4J?
+- ODL monitoring
+- Use branches for lab/production from the business app
+- ...
