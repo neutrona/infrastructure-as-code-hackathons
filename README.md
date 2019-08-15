@@ -1,5 +1,5 @@
 # infrastructure-as-code-hackathons
-Infrastructure as Code &amp; Software Defined Networking Hackathons
+Infrastructure as Code &amp; Software Defined Networking Hackathons - [Wiki](https://github.com/neutrona/infrastructure-as-code-hackathons/wiki)
 
 The backend collects network information: network topology, traffic engineering attributes, performance, etc.
 We used __BGP-LS, PCEP & NETCONF__ to collect such information.
