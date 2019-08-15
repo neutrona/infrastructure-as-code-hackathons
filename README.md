@@ -2,6 +2,7 @@
 Infrastructure as Code &amp; Software Defined Networking Hackathons
 
 The backend collects network information: network topology, traffic engineering attributes, performance, etc.
+We used BGP-LS, PCEP & NETCONF to collect such information.
 
 The business application exposes abstracted network information to an IDE (C#), an operator can code custom 
 business rules for path computation, testing and validation. This code is then pushed to a git repository and
